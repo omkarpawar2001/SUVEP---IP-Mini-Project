@@ -1,6 +1,38 @@
+img {
+    width: 70%;
+    height: auto;
+    align-self: center;
+}
+/* sm */
+@media (min-width: 768px) {
+    img {
+        width: 150px;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    img {
+        width: 200px;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    img {
+        width: 250px;
+    }
+}
+
+.banner-center{
+    align-self: center;
+}
+
 .custom_nav{
     font-size: small;
-    box-shadow: 0px 2px 12px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 12px rgba(226, 223, 223, 0.3);
+    padding-left: 10px;
+    padding-right: 10px;
+    /* margin-left: 10px;
+    margin-right: 10px; */
 }
 .custom_nav ul.dropdown-menu {
     font-size: small;
@@ -19,8 +51,17 @@ li{
     background: #93CB52;
     margin: 0 auto;
     width: 120px;
-    color: white;
+    color: whitesmoke;
+    font-weight: bold;
 }
+.btn-design:hover{
+    background: #6c943d;
+    margin: 0 auto;
+    width: 120px;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
 .advantages{
     color: lime;
 }
@@ -35,6 +76,15 @@ li{
     max-width: 100%;
 /*    padding: 0;*/
 }
+.why-us-padding{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.img-fluid {
+    max-width: 100%;
+}
 
 .custom-divider{
     height: 5px;
@@ -42,12 +92,16 @@ li{
     background: linear-gradient(90deg, rgba(255,145,0,1) 0%, rgba(9,9,121,1) 15%, rgba(153,7,128,1) 39%, rgba(5,107,186,1) 59%, rgba(26,221,3,1) 79%, rgba(0,212,255,1) 100%);
 }
 .main-banner{
-    padding-top: 150px;
-    padding-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 90px;
+    padding-bottom: 90px;
     background-image: url(img/jo-szczepanska-9OKGEVJiTKk-unsplash.jpg);
     background-size: cover;
     color: white;
-    height: 100vh;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    justify-content: center;
 }
 .feature-holder {
     text-align: center;
@@ -80,6 +134,8 @@ section.online-courses, .classroom-training, .reviews-slider, .page-content {
 .online-course-card, .review-text-widget {
     text-align: center;
     margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .online-course-card .card-title {
     font-size: 1em;
