@@ -21,10 +21,46 @@ img {
         width: 250px;
     }
 }
+.logo {
+    width: 70%;
+    height: auto;
+    align-self: center;
+}
+/* sm */
+@media (min-width: 768px) {
+    .logo {
+        width: 7px;
+    }
+}
+@media (min-width: 100px) {
+    .logo {
+        width: 35px;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    .logo {
+        width: 35px;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    .logo {
+        width: 6%;
+    }
+}
 
 .banner-center{
     align-self: center;
 }
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
 
 .custom_nav{
     font-size: small;
@@ -48,19 +84,32 @@ li{
     margin: 0 auto;
 }
 .btn-design{
-    background: #93CB52;
-    margin: 0 auto;
-    width: 120px;
+    /* background-image:  linear-gradient(to right, teal 0%, rgb(80, 223, 80) 51%, teal 100% ); */
+    background-image:  linear-gradient(to right, #000428 0%, #2374bb  51%, #000428  100%);
+    /* background-image: linear-gradient(to right, #43C6AC 0%, #191654  51%, #43C6AC  100%); */
+
+    align-self: center;
+}
+.btn-design{
+    margin: 0;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 13px;
+    padding-right: 13px;
+    width: auto;
+    border-radius: 10px;
+    transition: 0.5s;
+    background-size: 200% auto;
     color: whitesmoke;
     font-weight: bold;
 }
 .btn-design:hover{
-    background: #6c943d;
-    margin: 0 auto;
-    width: 120px;
+    background-position: right center;
     color: whitesmoke;
-    font-weight: bold;
+    text-decoration: none;
 }
+
+
 
 .advantages{
     color: lime;
