@@ -49,7 +49,33 @@ img {
         width: 6%;
     }
 }
-
+.profile-pic{
+    width: 5%;
+    height: auto;
+    /* margin-right: 20px; */
+}
+@media (min-width: 768px) {
+    .profile-pic {
+        width: 7px;
+    }
+}
+@media (min-width: 100px) {
+    .profile-pic {
+        width: 35px;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    .profile-pic {
+        width: 35px;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    .profile-pic {
+        width: 45px;
+    }
+}
 .banner-center{
     align-self: center;
 }
@@ -65,8 +91,10 @@ img {
 .custom_nav{
     font-size: small;
     box-shadow: 0px 2px 12px rgba(226, 223, 223, 0.3);
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 15px;
+    margin-right: 25px;
     /* margin-left: 10px;
     margin-right: 10px; */
 }
@@ -108,7 +136,46 @@ li{
     color: whitesmoke;
     text-decoration: none;
 }
-
+.laptops {
+    padding: 15px;
+    background-color: #32CE87;
+    visibility: hidden;
+  float:right;
+  box-shadow: 2px 2px 2px #aaaaaa;
+  border-radius: 5px;
+border: 1px solid grey;
+padding: 20px;
+width: 200px;
+height: 150px;
+  }
+  @media (min-width: 768px) {
+    .laptops {
+        width: 7px;
+    }
+}
+@media (min-width: 100px) {
+    .laptops {
+        width: 35px;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    .laptops {
+        width: 35px;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    .laptops {
+        margin-right: 200px;
+    }
+}
+  body {
+    padding: 10px 0px;
+  }
+  .circular_image{
+   border-radius:50%
+  }
 
 
 .advantages{
