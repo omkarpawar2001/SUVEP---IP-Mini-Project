@@ -134,6 +134,13 @@ li{
     color: whitesmoke;
     text-decoration: none;
 }
+
+.btn:hover{
+
+}
+
+
+
 .laptops {
     padding: 15px;
     background-color: #32CE87;
@@ -182,8 +189,8 @@ height: 150px;
 .content{
     margin-top: 5rem;
 }
-.btn:hover{
-    color: white;
+.linkbtn:hover{
+    color: yellow;
 }
 .container{
     margin: 0;
