@@ -131,14 +131,9 @@ li{
 }
 .btn-design:hover{
     background-position: right center;
-    color: blue;
+    color: white;
     text-decoration: none;
 }
-
-.btn:hover{
-    color: blue;
-}
-
 
 
 .laptops {
@@ -189,10 +184,30 @@ height: 150px;
 .content{
     margin-top: 5rem;
 }
-.linkbtn:hover{
-    background: blue;
-    color: white;
+
+.linkbtn{
+    margin: 0;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 13px;
+    padding-right: 13px;
+    width: auto;
+    border-radius: 10px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    font-weight: bold;
 }
+.linkbtn:hover{
+    background-position: right center;
+    background-image:  linear-gradient(to right, #000428 0%, #2374bb  51%, #000428  100%);
+    color: white;
+    text-decoration: none;
+}
+
+/* .linkbtn:hover{
+    background-image:  linear-gradient(to right, #000428 0%, #2374bb  51%, #000428  100%);
+    color: white;
+} */
 .container{
     margin: 0;
     max-width: 100%;
