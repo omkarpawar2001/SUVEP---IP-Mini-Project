@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,9 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="signup-style.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <title>Home Page</title>
+    <title>New User Registration | SUVEP</title>
+    
+    <!-- ----------------------Required Scripts----------------------- -->
+      
+        <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
+        <script src="../SUVEP---IP-Mini-Project/scripts/register.js"></script>
+        <script type="module" src="scripts/insertdata.js"></script>
     <style type="text/css">
+    
 .divider:after,
 .divider:before {
   content: "";
@@ -28,10 +37,6 @@
 }
 input[type="submit"]{
   display: inline;
-}
-.logo-text{
-    /* line-height: 5rem;
-    margin-top: 20px; */
 }
 
     </style>
@@ -98,23 +103,68 @@ input[type="submit"]{
                   <div class="row px-3"> <label class="mb-1">
                     <h6 class="mb-0 text-sm">Name </h6>
                 </label> 
-                <input class="mb-4" type="text" name="name" placeholder="Enter a valid name "> 
+                <input class="mb-4" type="text" id="name" placeholder="Enter Your Full Name "> 
                 </div>
 
                 <div class="row px-3"> <label class="mb-1">
                   <h6 class="mb-0 text-sm">Email </h6>
               </label> 
-              <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address"> 
+              <input class="mb-4" type="text" id="email" placeholder="Enter a Valid Email Address"> 
               </div>
 
               <div class="row px-3"> <label class="mb-1">
                 <h6 class="mb-0 text-sm">Mobile number </h6>
             </label> 
-            <input class="mb-4" type="text" name="mobileno" placeholder="Mobile Number "> 
+            <input class="mb-4" type="text" id="mobileno" placeholder="Enter a Valid Mobile Number "> 
             </div>
 
+            <div class="row px-3"> <label class="mb-1">
+                <h6 class="mb-0 text-sm">Address </h6>
+            </label> 
+            <input class="mb-4" type="text" id="address" placeholder="Enter Your Address"> 
+            </div>
+            <div class="row px-3"> <label class="mb-1">
+                  <h6 class="mb-0 text-sm">Register As: </h6><br>
+              </label>
+              </div> 
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                 Seller
+              </label>
+            </div>
+            <br>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Buyer
+              </label>
+            </div>
+            <br>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Advertiser
+              </label>
+            </div>
+            <br>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Distributer
+              </label>
+            </div>
+            <br>
+
+
+
+
             
-                  <div class="row mb-3 px-3"> <button type="submit" class="btn btn-outline-primary login-btn">Register</button> </div>
+                  <div class="row mb-3 px-3"> <button type="submit" class="btn btn-outline-primary login-btn" 
+                    id="submit">Register</button> </div>
                   
                   <div class="row mb-4 px-3"> <small class="font-weight-bold">Already have an account ?  <a href="login.html"class="text-danger ">Login Here </a></small> </div>
               </div>
