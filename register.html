@@ -1,174 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="signup-style.css">
+  <title>New User Registration | SUVEP</title>
+
+  <!-- ----------------------Required Scripts----------------------- -->
+
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
+  <!-- <script src="../SUVEP---IP-Mini-Project/scripts/register.js"></script> -->
+  <script type="module" src="scripts/insertdata.js"></script>
+  <style type="text/css">
+    .divider:after,
+    .divider:before {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    .h-custom {
+      height: calc(100% - 73px);
+    }
+
+    @media (max-width: 450px) {
+      .h-custom {
+        height: 100%;
+      }
+    }
+
+    input[type="submit"] {
+      display: inline;
+    }
+  </style>
+</head>
+
+<body>
+  <!doctype html>
+  <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="signup-style.css">
-    <title>New User Registration | SUVEP</title>
-    
-    <!-- ----------------------Required Scripts----------------------- -->
-      
-        <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
-        <script src="../SUVEP---IP-Mini-Project/scripts/register.js"></script>
-        <script type="module" src="scripts/insertdata.js"></script>
-    <style type="text/css">
-    
-.divider:after,
-.divider:before {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: #eee;
-}
-.h-custom {
-  height: calc(100% - 73px);
-}
-@media (max-width: 450px) {
-  .h-custom {
-    height: 100%;
-  }
-}
-input[type="submit"]{
-  display: inline;
-}
-
-    </style>
+    <link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>Home Page</title>
   </head>
-  <body>
-    <!doctype html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-        <title>Home Page</title>
-      </head>
-      <body>
-    <!-- nav -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom_nav">
-  <div class="container">
-      <div class="vertical-center">
-          <a class="navbar-brand" href="#">
-              <img src="img/logo.png" class="d-inline-block logo rounded-circle" alt=""">
-              <span class="logo-text">SUVEP </span>
-            </a>
-      </div>
 
-      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-      </ul>
-      <div class="d-flex">
-        <a href="#" class="btn btn-sm linkbtn">How it works ?
-        </a>
+  <body>
+    <!-- nav -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom_nav">
+      <div class="container">
+        <div class="vertical-center">
+          <a class="navbar-brand" href="#">
+            <img src="img/logo.png" class="d-inline-block logo rounded-circle" alt=""">
+              <span class=" logo-text">SUVEP </span>
+          </a>
+        </div>
+
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        </ul>
+        <div class="d-flex">
+          <a href="#" class="btn btn-sm linkbtn">How it works ?
+          </a>
+        </div>
+        <div class="d-flex">
+          <a href="#" class="btn btn-sm linkbtn">Shipping and Returns </a>
+        </div>
+        <div class="d-flex">
+          <a href="contact-us.html" class="btn btn-sm linkbtn">Contact Us </a>
+        </div>
       </div>
       <div class="d-flex">
-        <a href="#" class="btn btn-sm linkbtn">Shipping and Returns </a>
-      </div><div class="d-flex">
-        <a href="contact-us.html" class="btn btn-sm linkbtn">Contact Us </a>
-      </div>
-      </div><div class="d-flex">
-      <a href="contact-us.html" class="btn btn-sm linkbtn linkbtn-about">About Us </a>
+        <a href="contact-us.html" class="btn btn-sm linkbtn linkbtn-about">About Us </a>
       </div>
       <div class="d-flex"><a href="index.html" class="home-icon"><i class="fa fa-home fa-2x"></i></a></a>
-        </div>
-      <div class="d-flex">
-        <a href="login.html"  class="btn btn-sm btn-design">Login </a>
       </div>
-  </div>
-</nav>
-<!-- nav -->
-<!-- <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto"> -->
-  <div class="card card0 border-0">
-      <div class="row d-flex">
+      <div class="d-flex">
+        <a href="login.html" class="btn btn-sm btn-design">Login </a>
+      </div>
+      </div>
+    </nav>
+    <!-- nav -->
+    <!-- <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto"> -->
+      <div class="card card0 border-0">
+        <div class="row d-flex">
           <div class="col-lg-6">
-              <div class="card1">
-                  <div class="row px-3 justify-content-center mt-4 border-line"> <img src="img/istockphoto-1244483441-612x612.jpg" class="image"> </div>
-              </div>
+            <div class="card1">
+              <div class="row px-3 justify-content-center mt-4 border-line"> <img
+                  src="img/istockphoto-1244483441-612x612.jpg" class="image"> </div>
+            </div>
           </div>
           <div class="col-lg-6" style="margin: auto 0;">
-              <div class="card2 card border-0 px-4 py-5">
-                  <div class="row mb-4 px-3">
-                  </div>
-                  <div class="row px-3 mb-4">
-                  </div>
-                  <div class="row px-3"> <label class="mb-1">
-                    <h6 class="mb-0 text-sm">Name </h6>
-                </label> 
-                <input class="mb-4" type="text" id="name" placeholder="Enter Your Full Name "> 
-                </div>
-
-                <div class="row px-3"> <label class="mb-1">
-                  <h6 class="mb-0 text-sm">Email </h6>
-              </label> 
-              <input class="mb-4" type="text" id="email" placeholder="Enter a Valid Email Address"> 
+            <div class="card2 card border-0 px-4 py-5">
+              <div class="row mb-4 px-3">
+              </div>
+              <div class="row px-3 mb-4">
+              </div>
+              <div class="row px-3"> <label class="mb-1">
+                  <h6 class="mb-0 text-sm">Name </h6>
+                </label>
+                <input class="mb-4" type="text" id="name" placeholder="Enter Your Full Name " required>
               </div>
 
               <div class="row px-3"> <label class="mb-1">
-                <h6 class="mb-0 text-sm">Mobile number </h6>
-            </label> 
-            <input class="mb-4" type="text" id="mobileno" placeholder="Enter a Valid Mobile Number "> 
-            </div>
-
-            <div class="row px-3"> <label class="mb-1">
-                <h6 class="mb-0 text-sm">Address </h6>
-            </label> 
-            <input class="mb-4" type="text" id="address" placeholder="Enter Your Address"> 
-            </div>
-            <div class="row px-3"> <label class="mb-1">
-                  <h6 class="mb-0 text-sm">Register As: </h6><br>
-              </label>
-              </div> 
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-              <label class="form-check-label" for="flexRadioDefault2">
-                 Seller
-              </label>
-            </div>
-            <br>
-
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-              <label class="form-check-label" for="flexRadioDefault2">
-                Buyer
-              </label>
-            </div>
-            <br>
-
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-              <label class="form-check-label" for="flexRadioDefault2">
-                Advertiser
-              </label>
-            </div>
-            <br>
-
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-              <label class="form-check-label" for="flexRadioDefault2">
-                Distributer
-              </label>
-            </div>
-            <br>
-
-
-
-
-            
-                  <div class="row mb-3 px-3"> <button type="submit" class="btn btn-outline-primary login-btn" 
-                    id="submit">Register</button> </div>
-                  
-                  <div class="row mb-4 px-3"> <small class="font-weight-bold">Already have an account ?  <a href="login.html"class="text-danger ">Login Here </a></small> </div>
+                  <h6 class="mb-0 text-sm">Email </h6>
+                </label>
+                <input class="mb-4" type="text" id="email" placeholder="Enter a Valid Email Address" required>
               </div>
+
+              <div class="row px-3"> <label class="mb-1">
+                  <h6 class="mb-0 text-sm">Mobile number </h6>
+                </label>
+                <input class="mb-4" type="text" id="mobileno" placeholder="Enter a Valid Mobile Number " required>
+              </div>
+
+              <div class="row px-3"> <label class="mb-1">
+                  <h6 class="mb-0 text-sm">Address </h6>
+                </label>
+                <input class="mb-4" type="text" id="address" placeholder="Enter Your Address" required>
+              </div>
+              <div class="row px-3"> <label class="mb-1">
+                  <h6 class="mb-0 text-sm">Register As: </h6><br>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Seller
+                </label>
+              </div>
+              <br>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Buyer
+                </label>
+              </div>
+              <br>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Advertiser
+                </label>
+              </div>
+              <br>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Distributer
+                </label>
+              </div>
+              <br>
+
+              <div class="row mb-3 px-3"> <button class="btn btn-outline-primary login-btn"
+               id="submit">Register</button> </div>
+
+              <div class="row mb-4 px-3"> <small class="font-weight-bold">Already have an account ? <a href="login.html"
+                    class="text-danger ">Login Here </a></small> </div>
+            </div>
           </div>
-      </div>
-</body>
-</html>
+        </div>
+  </body>
+
+  </html>
