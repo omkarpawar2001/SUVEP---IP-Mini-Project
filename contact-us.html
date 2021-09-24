@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="contact-us.css">
     <link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script type="module" src="scripts/Contactus.js"></script>
+
+    <!-- ----------------------Required Scripts----------------------- -->
+
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
     <title>Home Page</title>
   </head>
   <body>
@@ -71,25 +79,23 @@
         <p>If you have any work from us or any types of quries related to us, you can send us message from here. It's our pleasure to help you.</p>
         <form action="#">
           <div class="input-box">
-            <input type="text" placeholder="Enter your name">
+            <input type="text" id = "name" placeholder="Enter your name">
           </div>
           <div class="input-box">
-            <input type="text" placeholder="Enter your email">
+            <input type="text" placeholder="Enter your email" id = "email">
           </div>
           <!-- <div class="input-box message-box">
             
               
           </div> -->
           <div  class="input-box textarea message-box">
-          <form action="" >
             <label for=""></label>
-            <textarea id="" name="" rows="4" cols="50" placeholder="Write a message here : "></textarea>
+            <textarea id="queries" name="" rows="4" cols="50" placeholder="Write a message here : "></textarea>
             </form>
           </div>
           <div class="button">
-            <input type="button" value="Send Now" >
+            <input type="button" id = "submit" value="Send Now" >
           </div>
-        </form>
       </div>
     </div>
   </div>
