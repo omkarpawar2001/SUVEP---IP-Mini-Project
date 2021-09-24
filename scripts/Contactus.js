@@ -34,7 +34,7 @@ function insert() {
       });
     insert.then(
       () => {
-        alert("Queries Registered Succesfully with email id ", email);
+        alert("Queries Registered Succesfully with email id "+ email);
         location.reload();
 
       },

@@ -47,9 +47,9 @@ function insert() {
       });
     insert.then(
       () => {
-        alert("User Registered Succesfully with email id ", email);
+        alert("User Registered Succesfully with email id " + email);
+        
         location.reload();
-
       },
       (error) => {
         console.log("error", error);
