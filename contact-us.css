@@ -52,7 +52,7 @@ body{
 }
 .content .left-side .details i{
   font-size: 30px;
-  color: #3e2093;
+  color: #240c68;
   margin-bottom: 10px;
 }
 .content .left-side .details .topic{
@@ -71,7 +71,7 @@ body{
 .content .right-side .topic-text{
   font-size: 23px;
   font-weight: 600;
-  color: #3e2093;
+  color: #240c68;
 }
 .right-side .input-box{
   height: 50px;
@@ -115,13 +115,18 @@ body{
   outline: none;
   border: none;
   padding: 8px 16px;
+  transition: 0.7s;
+  background-size: 200% auto;
   border-radius: 6px;
-  background: #3e2093;
+  background-image:  linear-gradient(to right, #000428 0%, #2374bb  51%, #000428  100%);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .button input[type="button"]:hover{
-  background: #5029bc;
+    background-position: right center;
+    color: white;
+    text-decoration: none;
+
 }
 
 @media (max-width: 950px) {
