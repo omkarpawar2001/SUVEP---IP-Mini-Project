@@ -47,12 +47,25 @@ function insert() {
       });
     insert.then(
       () => {
-        alert("User Registered Succesfully with email id " + email);
         
-        location.reload();
+        Swal.fire(
+          'Congratulations!',
+          'You have been succesfully registered..!',
+          'success'
+        ).then(
+          () => {
+            location.reload();
+          }
+        )
+        
+        
       },
       (error) => {
-        console.log("error", error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       }
     );
   }
