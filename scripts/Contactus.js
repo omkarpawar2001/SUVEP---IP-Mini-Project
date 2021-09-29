@@ -34,12 +34,21 @@ function insert() {
       });
     insert.then(
       () => {
-        alert("Queries Registered Succesfully with email id "+ email);
-        location.reload();
+        Swal.fire(
+          "Status",
+          "Your query has been succesfully registered..!",
+          "success"
+        ).then(() => {
+          location.reload();
+        });
 
       },
       (error) => {
-        console.log("error", error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       }
     );
   }
