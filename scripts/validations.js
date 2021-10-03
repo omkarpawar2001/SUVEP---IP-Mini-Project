@@ -24,4 +24,6 @@ function contactvalid(name,email,queries){
         return true;
     }
 }
+
+
 export {registervalid,contactvalid}

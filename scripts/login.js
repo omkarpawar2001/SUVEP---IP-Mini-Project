@@ -1,8 +1,8 @@
 import { db } from "./firebase_config.js";
+
 document.getElementById("submit").onclick = insert;
 
 function insert() {
-
   // console.log("Hello");
   // const q = query(collection(db, "users"), where("capital", "==", true));
 
@@ -11,8 +11,8 @@ function insert() {
   //     // doc.data() is never undefined for query doc snapshots
   //     console.log(doc.id, " => ", doc.data());
   // });
-//   var email = document.getElementById("email").value;
-//   var pwd = document.getElementById("password").value;
+  var email = document.getElementById("email").value;
+  var pwd = document.getElementById("password").value;
 
   // //   if (document.getElementById("flexRadioDefault1").checked == true) {
   // //     var type = "Seller";
@@ -23,10 +23,36 @@ function insert() {
   // //   } else if (document.getElementById("flexRadioDefault4").checked == true) {
   // //     var type = "Distributer";
   // //   }
-//   console.log("Email ", email);
-//     console.log("Password ", pwd);
-    
+  console.log("Email ", email);
+  console.log("Password ", pwd);
 
+  db.collection("users")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        let data = doc.data();
+        console.log(data);
+        console.log(data.Email);
+      });
+    })
+    .catch((err) => {
+      console.log(`Error: ${err}`);
+    });
+
+  
+  // db.collection("users")
+  //   .doc("d2019omkar.pawar@ves.ac.in")
+  //   .get()
+  //   .then((docSnapshot) => {
+  //     if (docSnapshot.exists) {
+  //       db.collection("users")
+  //         .doc("d2019omkar.pawar@ves.ac.in")
+  //         .onSnapshot((doc) => {
+  //           console.log();
+  //         });
+  //     }
+  //   });
+  
 
   //   const user_data = {
   //     Name: name,
