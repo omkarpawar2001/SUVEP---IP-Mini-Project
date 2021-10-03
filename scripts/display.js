@@ -1,4 +1,8 @@
-function display(name, email, mobile, address, typ) {
-  console.log(name, email, mobile, address, typ);
+
+function display(user) {
+    console.log(user);
+    document.getElementById("data").innerHTML = user;
 }
+
+
 export { display };

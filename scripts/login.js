@@ -1,5 +1,6 @@
 import { db } from "./firebase_config.js";
-import {emailvalid} from "./validations.js"
+import { emailvalid } from "./validations.js"
+import {fetchprofile} from "./profilefetch.js"
 
 document.getElementById("submit").onclick = insert;
 
@@ -24,8 +25,8 @@ function insert() {
   // //   } else if (document.getElementById("flexRadioDefault4").checked == true) {
   // //     var type = "Distributer";
   // //   }
-  console.log("Email ", email);
-  console.log("Password ", pwd);
+    console.log("Email ", email);
+    console.log("Password ", pwd);
   const users = [];
   var log;
   db.collection("auth")
@@ -40,8 +41,11 @@ function insert() {
           }
         }
       });
-      if (log == 1 && emailvalid(email)==true) {
+      if (log == 1 && emailvalid(email) == true) {
+        
+        fetchprofile(email);
         window.location.href = "/dash.html";
+        
       }
       else {
         Swal.fire({
@@ -115,3 +119,13 @@ function insert() {
   //     );
   //   }
 }
+var currentUser;
+// function rohan(name) {
+//   // console.log(name);
+//   currentUser = name;
+  
+//   return name;
+// }
+// console.log("Current User" + currentUser);
+
+// export { rohan };

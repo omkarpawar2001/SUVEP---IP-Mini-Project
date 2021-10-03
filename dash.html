@@ -10,6 +10,16 @@
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <title>DashBoard</title>
   <link rel="stylesheet" href="style.css">
+  <!-- <script type="module" src="scripts/profilefetch.js"></script> -->
+  <script type="module" src="./scripts/profilefetch.js"></script>
+  <script type="module" src="scripts/login.js"></script>
+  <script type="module" src="scripts/display.js"></script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
 </head>
 
 <body>
@@ -33,9 +43,9 @@
             <img class="circular_image profile-pic" id="profile"
               src="https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png">
             <b id="data"></b>
-            <script>
-              document.getElementById("data").innerHTML = "Omkar Pawar";
-            </script>
+                <script>
+                  document.getElementById("data").innerHTML = display();
+                </script>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">My Profile</a>
