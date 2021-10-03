@@ -25,15 +25,17 @@ function insert() {
   // //   }
   console.log("Email ", email);
   console.log("Password ", pwd);
-
+  const cars = [];
   db.collection("users")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         let data = doc.data();
-        console.log(data);
-        console.log(data.Email);
+        
+        cars.push(data.Email);
+        
       });
+      
     })
     .catch((err) => {
       console.log(`Error: ${err}`);
