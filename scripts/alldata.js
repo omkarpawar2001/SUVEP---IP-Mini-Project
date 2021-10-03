@@ -1,5 +1,4 @@
 import { db } from "./firebase_config.js";
-import {emailvalid} from "./validations.js"
 
 document.getElementById("submit").onclick = insert;
 
@@ -26,37 +25,20 @@ function insert() {
   // //   }
   console.log("Email ", email);
   console.log("Password ", pwd);
-  const users = [];
-  var log;
+  const cars = [];
   db.collection("auth")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         let data = doc.data();
-        users.push(data.Email);
-        for (var i = 0; i < users.length; i++){
-          if (email == data.Email) {
-            log = 1;
-          }
-        }
+        
+        cars.push(data.Email);
+        
       });
-      if (log == 1 && emailvalid(email)==true) {
-        window.location.href = "/dash.html";
-      }
-      else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "It seems you are not registered!! Kindly register yourself",
-        });
-      }
+      
     })
     .catch((err) => {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-      });
+      console.log(`Error: ${err}`);
     });
 
   

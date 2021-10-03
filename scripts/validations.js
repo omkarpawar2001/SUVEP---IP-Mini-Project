@@ -27,5 +27,15 @@ function contactvalid(name,email,queries){
     }
 }
 
+function emailvalid(email) {
+    if (email == "") {
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      alert("Please enter an valid Email-ID");
+    }
+    else {
+        return true;
+    }
+}
 
-export {registervalid,contactvalid}
+
+export {registervalid,contactvalid,emailvalid}
