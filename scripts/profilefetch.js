@@ -1,11 +1,11 @@
-import { display } from "./display.js";
+// import { display } from "./display.js";
 
 import { db } from "./firebase_config.js";
 
 let user="abc";
 document.onload = fetchprofile;
 
-function fetchprofile(email,user) {
+function fetchprofile(email) {
     db.collection("users")
         .doc(email)
         .get()
@@ -14,10 +14,7 @@ function fetchprofile(email,user) {
             let data = querySnapshot.data();
             // const user = data.Name;
             user = "Rohan PAdhye";
-            document.getElementById
-
-            
-            // console.log(ret);
+            console.log(user);
         })
         .catch((err) => {
             console.log(`Error: ${err}`);
@@ -27,9 +24,10 @@ function fetchprofile(email,user) {
 
 // document.getElementById("data").innerHTML = fetchprofile(email,user);
 
-function returnuser(user) {
-    return user;
-}
+// function returnuser() {
+//     // document.getElementById("data").innerHTML = user;
+// }
+// returnuser()
 
 
-export { fetchprofile, returnuser, user };
+export { fetchprofile, user };

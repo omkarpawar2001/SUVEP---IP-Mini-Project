@@ -44,7 +44,7 @@ function insert() {
       if (log == 1 && emailvalid(email) == true) {
         
         fetchprofile(email);
-        window.location.href = "/dash.html";
+        // window.location.href = "/dash.html";
         
       }
       else {
@@ -128,4 +128,4 @@ var currentUser;
 // }
 // console.log("Current User" + currentUser);
 
-// export { rohan };
+// export { email };

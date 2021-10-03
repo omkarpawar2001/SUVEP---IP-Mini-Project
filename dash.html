@@ -11,10 +11,10 @@
   <title>DashBoard</title>
   <link rel="stylesheet" href="style.css">
   <!-- <script type="module" src="scripts/profilefetch.js"></script> -->
-  <script type="module" src="./scripts/profilefetch.js"></script>
+  
   <script type="module" src="scripts/login.js"></script>
-  <script type="module" src="scripts/display.js"></script>
-
+  <!-- <script type="module" src="scripts/display.js"></script> -->
+  <script language="javascript" type="module" src="./scripts/display.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
@@ -23,6 +23,20 @@
 </head>
 
 <body>
+  <script>
+    window.onload = function () {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+    console.log(data.name);
+    var user = data.name;
+    document.getElementById('data').innerHTML = user.replace("%20"," ");
+}
+  </script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom_nav">
     <div class="container">
@@ -44,7 +58,7 @@
               src="https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png">
             <b id="data"></b>
                 <script>
-                  document.getElementById("data").innerHTML = display();
+                  // document.getElementById("data").innerHTML = display();
                 </script>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -110,6 +124,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
       integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
       crossorigin="anonymous"></script>
+      <!-- <script type="module" src="./scripts/profilefetch.js"></script> -->
 </body>
 
 </html>
