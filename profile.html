@@ -19,8 +19,8 @@
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- <script type="module" src="./scripts/display.js"></script> -->
-	<script type="module" src="scripts/cookiestore.js"></script>
-	<script language="javascript" type="module" src="./scripts/cookiestore.js"></script>
+	<script type="module" src="./scripts/cookiestore.js"></script>
+
 	<!-- <script type="module" src="scripts/login.js"></script> -->
 
 
@@ -144,7 +144,7 @@
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0 " >Email</h6>
+									<h6 class="mb-0 ">Email</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input readonly type="text" class="form-control" id="email">
@@ -153,7 +153,7 @@
 
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0" >Mobile</h6>
+									<h6 class="mb-0">Mobile</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input readonly type="text" class="form-control" id="mobile">
@@ -161,7 +161,7 @@
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0" >Address</h6>
+									<h6 class="mb-0">Address</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" class="form-control" id="address1">
@@ -180,23 +180,34 @@
 		</div>
 	</div>
 	<script>
-		console.log(getCookieLogin('username'));
-		// const arr = [
-		// 	getCookieLogin('username'),
-		// 	getCookieLogin('type'),
-		// 	getCookieLogin('email'),
-		// 	getCookieLogin('mobile'),
-		// 	getCookieLogin('address')
-		// ];
+		function getCookieLogin(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(";");
+			for (var i = 0; i < ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == " ") c = c.substring(1, c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+			}
+			return null;
+		}
 
-		// document.getElementById('name1').innerHTML =arr[0];
-		// document.getElementById("fullname").value=arr[0];
-		// document.getElementById("type1").value=arr[1];
-		// document.getElementById("address").value=arr[4];
-		// document.getElementById("mobile").value=arr[3];
-		// document.getElementById("email").value=arr[2];
-		// document.getElementById("address1").value=arr[4];
-		// document.getElementById("omkar").value=arr[0];
+		
+		const arr = [
+			getCookieLogin('username'),
+			getCookieLogin('type'),
+			getCookieLogin('email'),
+			getCookieLogin('mobile'),
+			getCookieLogin('address')
+		];
+
+		document.getElementById('name1').innerHTML =arr[0];
+		document.getElementById("fullname").value=arr[0];
+		document.getElementById("type1").value=arr[1];
+		document.getElementById("address").value=arr[4];
+		document.getElementById("mobile").value=arr[3];
+		document.getElementById("email").value=arr[2];
+		document.getElementById("address1").value=arr[4];
+		document.getElementById("omkar").value=arr[0];
 	</script>
 </body>
 
