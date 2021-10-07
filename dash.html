@@ -15,6 +15,7 @@
   <script type="module" src="scripts/login.js"></script>
   <!-- <script type="module" src="scripts/display.js"></script> -->
   <script language="javascript" type="module" src="./scripts/display.js"></script>
+  
 
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
@@ -25,7 +26,6 @@
 <body>
   <script>
     window.onload = function () {
-      console.log(document.cookie);
       var url = document.location.href,
         params = url.split('?')[1].split('&'),
         data = {}, tmp;
@@ -33,7 +33,6 @@
         tmp = params[i].split('=');
         data[tmp[0]] = tmp[1];
       }
-      console.log(data.name);
       var user = data.name;
       document.getElementById('data').innerHTML = user.replace("%20", " ");
     }

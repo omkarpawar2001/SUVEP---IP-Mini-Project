@@ -12,14 +12,15 @@
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="signup-style.css">
-	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css">
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- <script type="module" src="./scripts/display.js"></script> -->
-
+	<script type="module" src="scripts/cookiestore.js"></script>
+	<script language="javascript" type="module" src="./scripts/cookiestore.js"></script>
 	<!-- <script type="module" src="scripts/login.js"></script> -->
 
 
@@ -51,31 +52,7 @@
 </head>
 
 <body>
-	<script>
-		function getCookie(name) {
-			var nameEQ = name + "=";
-			var ca = document.cookie.split(';');
-			for (var i = 0; i < ca.length; i++) {
-				var c = ca[i];
-				while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-			}
-			return null;
-		}
-		console.log(document.cookie);
-		console.log(getCookie('email'));
 
-		const arr = [
-			getCookie('username'),
-			getCookie('type'),
-			getCookie('email'),
-			getCookie('mobile'),
-			getCookie('address')
-		];
-
-
-
-	</script>
 	<div class="container">
 		<div class="main-body">
 			<div class="row">
@@ -203,14 +180,23 @@
 		</div>
 	</div>
 	<script>
-		document.getElementById('name1').innerHTML =arr[0];
-		document.getElementById("fullname").value=arr[0];
-		document.getElementById("type1").value=arr[1];
-		document.getElementById("address").value=arr[4];
-		document.getElementById("mobile").value=arr[3];
-		document.getElementById("email").value=arr[2];
-		document.getElementById("address1").value=arr[4];
-		document.getElementById("omkar").value=arr[0];
+		console.log(getCookieLogin('username'));
+		// const arr = [
+		// 	getCookieLogin('username'),
+		// 	getCookieLogin('type'),
+		// 	getCookieLogin('email'),
+		// 	getCookieLogin('mobile'),
+		// 	getCookieLogin('address')
+		// ];
+
+		// document.getElementById('name1').innerHTML =arr[0];
+		// document.getElementById("fullname").value=arr[0];
+		// document.getElementById("type1").value=arr[1];
+		// document.getElementById("address").value=arr[4];
+		// document.getElementById("mobile").value=arr[3];
+		// document.getElementById("email").value=arr[2];
+		// document.getElementById("address1").value=arr[4];
+		// document.getElementById("omkar").value=arr[0];
 	</script>
 </body>
 
