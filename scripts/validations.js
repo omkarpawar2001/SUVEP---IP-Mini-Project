@@ -1,5 +1,5 @@
-function registervalid(name, email, mobile, address, pass, confirmpass) {
-    if (name=="" || email=="" || mobile==""||address==""||pass==""||confirmpass=="") {
+function registervalid(profile,name, email, mobile, address, pass, confirmpass) {
+    if (profile==""||name=="" || email=="" || mobile==""||address==""||pass==""||confirmpass=="") {
         alert("Please fill all the fields");
         return false;
     }
