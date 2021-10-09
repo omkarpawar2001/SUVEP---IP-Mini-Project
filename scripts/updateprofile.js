@@ -8,7 +8,7 @@ function insert() {
   var email = document.getElementById("email").value;
   var mobile = document.getElementById("mobile").value;
   var address = document.getElementById("address1").value;
-  var type = document.getElementById("type").value;
+  var type = document.getElementById("type1").value;
   console.log(name);
 
 
@@ -19,8 +19,6 @@ function insert() {
     Address: address,
     Type: type,
   };
-
-
 
 
 
