@@ -1,6 +1,5 @@
 import { db } from "./firebase_config.js";
 import { emailvalid } from "./validations.js"
-import {fetchprofile} from "./profilefetch.js"
 
 document.getElementById("submit").onclick = insert;
 

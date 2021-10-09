@@ -12,7 +12,7 @@
   <!-- Custom stylesheet - for your changes-->
   <link rel="stylesheet" href="css/custom.css">
   <!-- Favicon-->
-  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="shortcut icon" href="img/logo.PNG">
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
@@ -23,9 +23,8 @@
   <link rel="stylesheet" href="style.css">
   <!-- <script type="module" src="scripts/profilefetch.js"></script> -->
 
-  <script type="module" src="scripts/login.js"></script>
+  <script type="module" src="scripts/dashprofilefetch.js"></script>
   <!-- <script type="module" src="scripts/display.js"></script> -->
-  <script language="javascript" type="module" src="./scripts/display.js"></script>
 
 
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
@@ -36,17 +35,7 @@
 
 <body>
   <script>
-    window.onload = function () {
-      var url = document.location.href,
-        params = url.split('?')[1].split('&'),
-        data = {}, tmp;
-      for (var i = 0, l = params.length; i < l; i++) {
-        tmp = params[i].split('=');
-        data[tmp[0]] = tmp[1];
-      }
-      var user = data.name;
-      document.getElementById('data').innerHTML = user.replace("%20", " ");
-    }
+    window.onload = 
   </script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom_nav">
@@ -65,8 +54,9 @@
         <li class="nav-item dropdown ">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <img class="circular_image profile-pic" id="profile"
-              src="https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png">
+            <img class="circular_image profile-pic"
+              src="" id="picsm">
+              <img src="" alt="" id="ok">
             <b id="data"></b>
             <script>
                   // document.getElementById("data").innerHTML = display();
@@ -104,14 +94,13 @@
     <nav class="side-navbar z-index-40">
       <!-- Sidebar Header-->
       <div class="sidebar-header d-flex align-items-center py-4 px-3"><img
-          class="avatar shadow-0 img-fluid rounded-circle" src="img/avatar-1.jpg" alt="...">
+          class="avatar shadow-0 img-fluid rounded-circle" id="piclg" src="" >
         <div class="ms-3 title">
-          <h1 class="h4 mb-2">Mark Stephen</h1>
-          <p class="text-sm text-gray-500 fw-light mb-0 lh-1">Web Designer</p>
+          <h1 class="h5 mb-2" id="sidename"></h1>
+          <p class="text-sm text-gray-700 fw-light mb-0 lh-1" id="sidetype"></p>
         </div>
       </div>
-      <!-- Sidebar Navidation Menus--><span
-        class="text-uppercase text-gray-400 text-xs letter-spacing-0 mx-3 px-2 heading">Main</span>
+     
       <ul class="list-unstyled py-4">
         <li class="sidebar-item active"><a class="sidebar-link" href="index.html">
             <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
@@ -168,7 +157,6 @@
       <header class="bg-white shadow-sm px-4 py-3 z-index-20">
         <div class="container-fluid px-0">
           <h2 class="mb-0 p-1">Dashboard</h2>
-          <a class="menu-btn active" id="toggle-btn" href="#"><span></span><span></span><span></span></a>
         </div>
       </header>
       <!-- Dashboard Counts Section-->
@@ -353,7 +341,7 @@
     // while using file:// protocol
     // pls don't forget to change to your domain :)
     injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
-
+    
 
   </script>
   <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
