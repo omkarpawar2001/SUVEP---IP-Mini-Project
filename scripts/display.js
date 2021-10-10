@@ -24,7 +24,7 @@ function display() {
           .get()
           .then((querySnapshot) => {
             let data = querySnapshot.data();
-            if (data.Type == "Admin") {
+            if (data.Type != "Seller") {
               user = data.Name;
               mobile = data.MobileNo;
               address = data.Address;
@@ -32,11 +32,10 @@ function display() {
               // console.log(user, mobile, address);
               setCookieLogin(email, user, mobile, address, type);
               console.log(document.cookie);
-              var url = "/dash.html?name=" + user;
+              var url = "/userhome.html?name=" + user;
               document.location.href = url;
             }
             else {
-              
               user = data.Name;
               mobile = data.MobileNo;
               address = data.Address;

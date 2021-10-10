@@ -43,6 +43,7 @@ function insert() {
       if (log == 1 && emailvalid(email) == true) {
         
         fetchprofile(email);
+        
         // window.location.href = "/dash.html";
         
       }
