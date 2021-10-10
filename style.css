@@ -60,7 +60,7 @@ img {
 /* lg */
 @media (min-width: 1200px) {
     .logo {
-        width: 6%;
+        width: 8%;
     }
 }
 .profile-pic{
