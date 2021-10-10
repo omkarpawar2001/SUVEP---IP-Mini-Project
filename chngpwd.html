@@ -118,7 +118,8 @@
             </ul>
 
             <div class="d-flex">
-                <div class="btn btn-design" id="logout">
+                <div class="btn btn-design" id="logout"
+                    onclick=" var allCookies = document.cookie.split(';');  for (var i = 0; i < allCookies.length; i++){document.cookie = allCookies[i] + '=;expires=' + new Date(0).toUTCString();}  window.location.href='/index.html'; ">
                     Logout
                 </div>
             </div>

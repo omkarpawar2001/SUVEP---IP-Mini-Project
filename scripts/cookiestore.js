@@ -1,4 +1,4 @@
-document.getElementById("logout").onclick = deleteCookies;
+
 
 function setCookieLogin(email, user, mobile, address, type) {
     document.cookie = "email = " + email;
@@ -27,6 +27,7 @@ function deleteCookies() {
     document.cookie = allCookies[i] + "=;expires=" + new Date(0).toUTCString();
 
   displayCookies.innerHTML = document.cookie;
+  window.location.href = "/index.html";
 }
 
 export { setCookieLogin, getCookieLogin, deleteCookies };
