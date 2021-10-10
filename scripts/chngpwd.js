@@ -19,7 +19,7 @@ function display() {
     .get()
     .then((querySnapshot) => {
       let data = querySnapshot.data();
-      if (current == data.Password) {
+      if (current == data.Password && newpass!="" && confirmpass!="" &&newpass==confirmpass ) {
         const auth = {
           Name: name,
           Email: email,
@@ -42,7 +42,7 @@ function display() {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Current Password Mismatch. Kindly re-check your password",
+          text: "Please check all details once again!",
         });
       }
     })

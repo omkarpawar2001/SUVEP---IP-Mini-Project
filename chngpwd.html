@@ -18,6 +18,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="scripts/cookiestore.js"></script>
     <style>
         body {
             font-family: "Lato", sans-serif;
@@ -117,7 +118,7 @@
             </ul>
 
             <div class="d-flex">
-                <div class="btn btn-design" onclick="document.location.href = '/login.html';">
+                <div class="btn btn-design" id="logout">
                     Logout
                 </div>
             </div>

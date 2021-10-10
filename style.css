@@ -382,3 +382,8 @@ section.copy p{
 .custom_nav ul.dropdown-menu {
     font-size: small;
 }
+
+.product-img{
+    height: 200px;
+    width: 150px;
+}
