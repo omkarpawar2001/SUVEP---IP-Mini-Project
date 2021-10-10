@@ -97,7 +97,7 @@ function insert() {
                 "You have been succesfully registered..!",
                 "success"
             ).then(() => {
-                location.reload();
+                window.location.href = "/login.html";
             });
         },
         (error) => {
