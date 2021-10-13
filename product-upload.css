@@ -34,7 +34,7 @@ body{
   align-items: center;
   justify-content: center;
   margin-top: 15px;
-  /* position: relative; */
+  position: relative;
 }
 .content .left-side::before{
   content: '';
@@ -73,15 +73,15 @@ body{
   font-weight: 600;
   color: #240c68;
 }
-.right-side .input-box{
+.input-box{
   height: 50px;
   width: 100%;
   margin: 12px 0;
 }
-.right-side .input-box input,
-.right-side .input-box textarea{
+/*.right-side .input-box input,
+.right-side */.input-box textarea{
   height: 100%;
-  width: 98%;
+  width: 50%;
   border: none;
   outline: none;
   font-size: 16px;
@@ -89,6 +89,18 @@ body{
   border-radius: 6px;
   padding: 0 15px;
   resize: none;
+}
+input[type="text"]{
+    border: none;
+    height: 100%;
+    width: 50%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: #F0F1F8;
+    border-radius: 6px;
+    padding: 0 15px;
+    resize: none;
 }
 /* .input-textarea{
   border: none;
@@ -102,7 +114,7 @@ body{
 .right-side .message-box{
   min-height: 110px;
 }
-.right-side .input-box textarea{
+.input-box textarea{
   padding-top: 6px;
 }
 .right-side .button{
@@ -145,7 +157,7 @@ body{
     height: 100%;
   }
   .container .content{
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
  .container .content .left-side{
    width: 100%;
@@ -165,18 +177,16 @@ body{
 
 .textarea-box{
   padding: 5px;
-  width: 90%;
-}
-
-.content{
-  
-  margin: 0px;
 }
 
 body{
-  padding: 0;
-  height: auto;
-  width: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
+  padding: 0px;
+}
+
+.email-details{
+    margin-left: 200px;
+}
+
+.margin{
+  margin-left: 20px;
 }
