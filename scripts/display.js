@@ -24,7 +24,18 @@ function display() {
           .get()
           .then((querySnapshot) => {
             let data = querySnapshot.data();
-            if (data.Type != "Seller") {
+            if (data.Type == "Admin") {
+              user = data.Name;
+              mobile = data.MobileNo;
+              address = data.Address;
+              type = data.Type;
+              // console.log(user, mobile, address);
+              setCookieLogin(email, user, mobile, address, type);
+              console.log(document.cookie);
+              var url = "/adminhome.html?name=" + user;
+              document.location.href = url;
+            }
+            else if (data.Type != "Seller") {
               user = data.Name;
               mobile = data.MobileNo;
               address = data.Address;
