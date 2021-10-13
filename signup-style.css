@@ -136,13 +136,10 @@ li{
 }
 .btn-design:hover{
     background-position: right center;
-    color: blue;
     text-decoration: none;
 }
 
-.btn:hover{
-    color: blue;
-}
+
 
 
 
@@ -378,9 +375,9 @@ body {
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    margin-left: 35px
+    width: 6%;
+    height: 6%;
+    margin-left: 35px;
 }
 
 .image {

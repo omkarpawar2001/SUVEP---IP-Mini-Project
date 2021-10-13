@@ -2,6 +2,17 @@
 <html lang="en">
 
 <head>
+  <meta name="robots" content="all,follow">
+  <!-- Google fonts - Poppins -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <!-- Choices CSS-->
+  <link rel="stylesheet" href="vendor/choices.js/public/assets/styles/choices.min.css">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="img/logo.PNG">
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
@@ -10,11 +21,12 @@
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <title>DashBoard</title>
   <link rel="stylesheet" href="style.css">
+  <script type="module" src="scripts/cookiestore.js"></script>
   <!-- <script type="module" src="scripts/profilefetch.js"></script> -->
 
-  <script type="module" src="scripts/login.js"></script>
+  <script type="module" src="scripts/dashprofilefetch.js"></script>
   <!-- <script type="module" src="scripts/display.js"></script> -->
-  <script language="javascript" type="module" src="./scripts/display.js"></script>
+
 
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
@@ -23,21 +35,7 @@
 </head>
 
 <body>
-  <script>
-    window.onload = function () {
-      console.log(document.cookie);
-      var url = document.location.href,
-        params = url.split('?')[1].split('&'),
-        data = {}, tmp;
-      for (var i = 0, l = params.length; i < l; i++) {
-        tmp = params[i].split('=');
-        data[tmp[0]] = tmp[1];
-      }
-      console.log(data.name);
-      var user = data.name;
-      document.getElementById('data').innerHTML = user.replace("%20", " ");
-    }
-  </script>
+
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom_nav">
     <div class="container">
@@ -55,8 +53,9 @@
         <li class="nav-item dropdown ">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <img class="circular_image profile-pic" id="profile"
-              src="https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png">
+            <img class="circular_image profile-pic"
+              src="" id="picsm">
+              <img src="" alt="" id="ok">
             <b id="data"></b>
             <script>
                   // document.getElementById("data").innerHTML = display();
@@ -64,13 +63,14 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="./profile.html">My Profile</a>
-            <a class="dropdown-item" href="#">My Products</a>
-            <a class="dropdown-item" href="#">Help & Support</a>
+
+            <a class="dropdown-item" href="./chngpwd.html">Change Password</a>
+            <a class="dropdown-item" href="./about.html">Help & Support</a>
           </div>
         </li>
       </div>
       <div class="d-flex">
-        <div class="btn btn-design" onclick="document.location.href = '/login.html';">
+        <div class="btn btn-design" id="logout" onclick = " var allCookies = document.cookie.split(';');  for (var i = 0; i < allCookies.length; i++){document.cookie = allCookies[i] + '=;expires=' + new Date(0).toUTCString();}  window.location.href='/index.html'; ">
           Logout
         </div>
       </div>
@@ -80,52 +80,291 @@
 
   </nav>
 
+  <!-- Actual Dashboard -->
+
+  <div class="page" style="padding-top:55px;">
 
 
-  <div class="card card0 border-0">
-    <div class="row d-flex">
-      <div class="col-lg-6">
-        <div class="card1">
-          <div class="row px-3 justify-content-center mt-4 border-line"> <img
-              src="img/istockphoto-1244483441-612x612.jpg" class="image"> </div>
+  </div>
+  </div>
+  </nav>
+  </header>
+  <div class="page-content d-flex align-items-stretch">
+    <!-- Side Navbar -->
+    <nav class="side-navbar z-index-40">
+      <!-- Sidebar Header-->
+      <div class="sidebar-header d-flex align-items-center py-4 px-3"><img
+          class="avatar shadow-0 img-fluid rounded-circle" id="piclg" src="" >
+        <div class="ms-3 title">
+          <h1 class="h5 mb-2" id="sidename"></h1>
+          <p class="text-sm text-gray-700 fw-light mb-0 lh-1" id="sidetype"></p>
         </div>
       </div>
-      <div class="col-lg-6" style="margin: auto 0;">
-        <div class="card2 card border-0 px-4 py-5">
-
-          <div class="row px-3"> <label class="mb-1">
-              <h6 class="mb-0 text-sm">Email Address</h6>
-            </label> <input class="mb-4" type="text" id="email" name="email" placeholder="Enter a valid email address">
-          </div>
-          <div class="row px-3"> <label class="mb-1">
-              <h6 class="mb-0 text-sm">Password</h6>
-            </label> <input type="password" id="password" name="password" placeholder="Enter password"> </div>
-          <div class="row px-3 mb-4">
-            <!-- <div class="custom-control custom-checkbox custom-control-inline"> <input id="chk1" type="checkbox" name="chk" class="custom-control-input"> <label for="chk1" class="custom-control-label text-sm">I want regular updates on Whatsapp <i class="fa fa-whatsapp"></i></label> </div> <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a> -->
-          </div>
-          <div class="row mb-3 px-3"> <button type="submit" id="submit" onclick="insert()"
-              class="btn btn-outline-primary login-btn">Login</button> </div>
-          <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a href="register.html"
-                class="text-danger ">Register</a></small> </div>
+     
+      <ul class="list-unstyled py-4">
+        <li class="sidebar-item active"><a class="sidebar-link" href="index.html">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#real-estate-1"> </use>
+            </svg>Home </a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="tables.html">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#portfolio-grid-1"> </use>
+            </svg>Tables </a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="charts.html">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#sales-up-1"> </use>
+            </svg>Charts </a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="forms.html">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#survey-1"> </use>
+            </svg>Forms </a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="#exampledropdownDropdown" data-bs-toggle="collapse">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#browser-window-1"> </use>
+            </svg>Example dropdown </a>
+          <ul class="collapse list-unstyled " id="exampledropdownDropdown">
+            <li><a class="sidebar-link" href="#">Page</a></li>
+            <li><a class="sidebar-link" href="#">Page</a></li>
+            <li><a class="sidebar-link" href="#">Page</a></li>
+          </ul>
+        </li>
+        <li class="sidebar-item"><a class="sidebar-link" href="login.html">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#disable-1"> </use>
+            </svg>Login page </a></li>
+      </ul><span class="text-uppercase text-gray-400 text-xs letter-spacing-0 mx-3 px-2 heading">Extras</span>
+      <ul class="list-unstyled py-4">
+        <li class="sidebar-item"> <a class="sidebar-link" href="#">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#imac-screen-1"> </use>
+            </svg>Demo </a></li>
+        <li class="sidebar-item"> <a class="sidebar-link" href="#">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#chart-1"> </use>
+            </svg>Demo </a></li>
+        <li class="sidebar-item"> <a class="sidebar-link" href="#">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#quality-1"> </use>
+            </svg>Demo </a></li>
+        <li class="sidebar-item"> <a class="sidebar-link" href="#">
+            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
+              <use xlink:href="#security-shield-1"> </use>
+            </svg>Demo </a></li>
+      </ul>
+    </nav>
+    <div class="content-inner w-100">
+      <!-- Page Header-->
+      <header class="bg-white shadow-sm px-4 py-3 z-index-20">
+        <div class="container-fluid px-0">
+          <h2 class="mb-0 p-1">Dashboard</h2>
         </div>
-      </div>
+      </header>
+      <!-- Dashboard Counts Section-->
+      <section class="pb-0">
+        <div class="container-fluid">
+          <div class="card mb-0">
+            <div class="card-body">
+              <div class="row gx-5 bg-white">
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6 py-4 border-lg-end border-gray-200">
+                  <div class="d-flex align-items-center">
+                    <div class="icon flex-shrink-0 bg-violet">
+                      <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                        <use xlink:href="#user-1"> </use>
+                      </svg>
+                    </div>
+                    <div class="mx-3">
+                      <h6 class="h4 fw-light text-gray-600 mb-3">New<br>Clients</h6>
+                      <div class="progress" style="height: 4px">
+                        <div class="progress-bar bg-violet" role="progressbar" style="width: 25%; height: 4px;"
+                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="number"><strong class="text-lg">25</strong></div>
+                  </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6 py-4 border-lg-end border-gray-200">
+                  <div class="d-flex align-items-center">
+                    <div class="icon flex-shrink-0 bg-red">
+                      <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                        <use xlink:href="#survey-1"> </use>
+                      </svg>
+                    </div>
+                    <div class="mx-3">
+                      <h6 class="h4 fw-light text-gray-600 mb-3">Work<br>Orders</h6>
+                      <div class="progress" style="height: 4px">
+                        <div class="progress-bar bg-red" role="progressbar" style="width: 70%; height: 4px;"
+                          aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="number"><strong class="text-lg">70</strong></div>
+                  </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6 py-4 border-lg-end border-gray-200">
+                  <div class="d-flex align-items-center">
+                    <div class="icon flex-shrink-0 bg-green">
+                      <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                        <use xlink:href="#numbers-1"> </use>
+                      </svg>
+                    </div>
+                    <div class="mx-3">
+                      <h6 class="h4 fw-light text-gray-600 mb-3">New<br>Invoices</h6>
+                      <div class="progress" style="height: 4px">
+                        <div class="progress-bar bg-green" role="progressbar" style="width: 40%; height: 4px;"
+                          aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="number"><strong class="text-lg">40</strong></div>
+                  </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6 py-4">
+                  <div class="d-flex align-items-center">
+                    <div class="icon flex-shrink-0 bg-orange">
+                      <svg class="svg-icon svg-icon-sm svg-icon-heavy">
+                        <use xlink:href="#list-details-1"> </use>
+                      </svg>
+                    </div>
+                    <div class="mx-3">
+                      <h6 class="h4 fw-light text-gray-600 mb-3">Open<br>Cases</h6>
+                      <div class="progress" style="height: 4px">
+                        <div class="progress-bar bg-orange" role="progressbar" style="width: 50%; height: 4px;"
+                          aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="number"><strong class="text-lg">50</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Dashboard Header Section    -->
+      <section class="pb-0">
+        <div class="container-fluid">
+          <div class="row align-items-stretch">
+            <!-- Statistics -->
+            <div class="col-lg-3 col-12">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="icon flex-shrink-0 bg-red"><i class="fas fa-tasks"></i></div>
+                    <div class="ms-3"><strong class="text-lg d-block lh-1 mb-1">234</strong><small
+                        class="text-uppercase text-gray-500 small d-block lh-1">Applications</small></div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="icon flex-shrink-0 bg-green"><i class="far fa-calendar"></i></div>
+                    <div class="ms-3"><strong class="text-lg d-block lh-1 mb-1">152</strong><small
+                        class="text-uppercase text-gray-500 small d-block lh-1">Interviews</small></div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-0">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="icon flex-shrink-0 bg-orange"><i class="far fa-paper-plane"></i></div>
+                    <div class="ms-3"><strong class="text-lg d-block lh-1 mb-1">147</strong><small
+                        class="text-uppercase text-gray-500 small d-block lh-1">Forwards</small></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Line Chart            -->
+            <div class="col-lg-6 col-12">
+              <div class="card mb-0 h-100">
+                <div class="card-body">
+                  <canvas id="lineCahrt"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-12">
+              <!-- Bar Chart   -->
+              <div class="card">
+                <div class="card-body"><strong class="h2 mb-0 d-block text-violet">95%</strong><small
+                    class="text-gray-500 small text-uppercase d-block mb-3">Current Server Uptime</small>
+                  <canvas id="barChartHome"></canvas>
+                </div>
+              </div>
+              <!-- Numbers-->
+              <div class="card mb-0">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="icon flex-shrink-0 bg-green"><i class="fas fa-chart-area"></i></div>
+                    <div class="ms-3"><strong class="text-lg mb-0 d-block lh-1">99.9%</strong><small
+                        class="text-gray-500 small text-uppercase">Success Rate</small></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
+  </div>
+  </div>
+  <!-- JavaScript files-->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/just-validate/js/just-validate.min.js"></script>
+  <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script src="js/charts-home.js"></script>
+  <!-- Main File-->
+  <script src="js/front.js"></script>
+  <script>
+    // ------------------------------------------------------- //
+    //   Inject SVG Sprite - 
+    //   see more here 
+    //   https://css-tricks.com/ajaxing-svg-sprite/
+    // ------------------------------------------------------ //
+    function injectSvgSprite(path) {
+
+      var ajax = new XMLHttpRequest();
+      ajax.open("GET", path, true);
+      ajax.send();
+      ajax.onload = function (e) {
+        var div = document.createElement("div");
+        div.className = 'd-none';
+        div.innerHTML = ajax.responseText;
+        document.body.insertBefore(div, document.body.childNodes[0]);
+      }
+    }
+    // this is set to BootstrapTemple website as you cannot 
+    // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
+    // while using file:// protocol
+    // pls don't forget to change to your domain :)
+    injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+    
+
+  </script>
+  <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-      crossorigin="anonymous"></script>
-    <!-- <script type="module" src="./scripts/profilefetch.js"></script> -->
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+  <!-- <script type="module" src="./scripts/profilefetch.js"></script> -->
 </body>
 
 </html>

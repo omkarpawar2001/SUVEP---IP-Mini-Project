@@ -20,52 +20,73 @@ main_prodcut_image.src = element.src;
 
 
 }
+
+
     </script>
+    <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+      <link rel="stylesheet" href="style.css">
   </head>
   <body>
-<!-- nav -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom_nav">
-  <div class="container">
-      <div class="vertical-center">
-          <a class="navbar-brand" href="#">
-              <img src="img/logo.png" class="d-inline-block logo rounded-circle" alt=""">
-              <span class="logo-text">SUVEP </span>
-            </a>
-      </div>
+<!-- Navbar Snippet -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom_nav ">
+    <div class="container-fluid float-end">
 
-      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-      </ul>
-      <div class="d-flex">
-        <a href="#" class="btn btn-sm linkbtn">How it works ?
-        </a>
-      </div>
-      <div class="d-flex">
-        <a href="#" class="btn btn-sm linkbtn">Shipping and Returns </a>
-      </div><div class="d-flex">
-        <a href="contact-us.html" class="btn btn-sm linkbtn">Contact Us </a>
-      </div>
-      </div><div class="d-flex">
-      <a href="contact-us.html" class="btn btn-sm linkbtn linkbtn-about">About Us </a>
-      </div>
-      <div class="d-flex"><a href="index.html" class="home-icon"><i class="fa fa-home fa-2x"></i></a></a>
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" class="d-inline-block logo rounded-circle" alt="" width=5% height=5%>
+                <span class="logo-text">SUVEP </span>
+            </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+            </ul>
+            <div class="d-flex">
+                <a href="#" class="btn btn-sm linkbtn">How it works ?
+                </a>
+            </div>
+            <div class="d-flex">
+                <a href="#" class="btn btn-sm linkbtn">Shipping and Returns </a>
+            </div>
+            <div class="d-flex">
+                <a href="contact-us.html" class="btn btn-sm linkbtn">Contact Us </a>
+            </div>
+            <div class="d-flex">
+                <a href="contact-us.html" class="btn btn-sm linkbtn">About Us </a>
+            </div>
+            <!-- <div class="d-flex"><a href="index.html" class="home-icon"><i class="fa fa-home fa-2x"></i></a></a>
+            </div> -->
+            <div class="d-flex">
+                <a href="login.html" class="btn btn-sm btn-design">Login </a>
+            </div>
         </div>
-      <div class="d-flex">
-        <a href="login.html"  class="btn btn-sm btn-design">Login </a>
-      </div>
-  </div>
+    </div>
 </nav>
-<!-- nav --><div class="container mt-5 mb-5">
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+        crossorigin="anonymous"></script>
+<div class="container">
     <div class="card">
         <div class="row g-0">
             <div class="col-md-6 border-end">
                 <div class="d-flex flex-column justify-content-center">
-                    <div class="main_image"> <img src="https://i.imgur.com/TAzli1U.jpg" id="main_product_image" width="350"> </div>
+                    <div class="main_image"> <img src="img/penstand1.jpg" id="main_product_image" width="350"> </div>
                     <div class="thumbnail_images">
                         <ul id="thumbnail">
-                            <li><img onclick="changeImage(this)" src="https://i.imgur.com/TAzli1U.jpg" width="70"></li>
-                            <li><img onclick="changeImage(this)" src="https://i.imgur.com/w6kEctd.jpg" width="70"></li>
-                            <li><img onclick="changeImage(this)" src="https://i.imgur.com/L7hFD8X.jpg" width="70"></li>
-                            <li><img onclick="changeImage(this)" src="https://i.imgur.com/6ZufmNS.jpg" width="70"></li>
+                            <li><img onclick="changeImage(this)" src="img/penstand1.jpg" width="70" class="product-img"></li>
+                            <li><img onclick="changeImage(this)" src="img/penstand2.jpg" width="70" class="product-img"></li>
+                            <li><img onclick="changeImage(this)" src="img/penstand3.jpg" width="70" class="product-img"></li>
                         </ul>
                     </div>
                 </div>
@@ -73,14 +94,14 @@ main_prodcut_image.src = element.src;
             <div class="col-md-6">
                 <div class="p-3 right-side">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3>IIlana</h3> <span class="heart"><i class='bx bx-heart'></i></span>
+                        <h3>Penstand </h3> <span class="heart"><i class='fa fa-heart'></i></span>
                     </div>
                     <div class="mt-2 pr-3 content">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                     </div>
                     <h3>$430.99</h3>
                     <div class="ratings d-flex flex-row align-items-center">
-                        <div class="d-flex flex-row"> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bx-star'></i> </div> <span>441 reviews</span>
+                        <div class="d-flex flex-row"> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> <i class='fa fa-star'></i> </div> <span>441 reviews</span>
                     </div>
                     <div class="mt-5"> <span class="fw-bold">Color</span>
                         <div class="colors">

@@ -1,6 +1,5 @@
 import { db } from "./firebase_config.js";
 import { emailvalid } from "./validations.js"
-import {fetchprofile} from "./profilefetch.js"
 
 document.getElementById("submit").onclick = insert;
 
@@ -44,6 +43,7 @@ function insert() {
       if (log == 1 && emailvalid(email) == true) {
         
         fetchprofile(email);
+        
         // window.location.href = "/dash.html";
         
       }
