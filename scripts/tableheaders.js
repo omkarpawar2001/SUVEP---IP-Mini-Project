@@ -10,6 +10,7 @@ function userHead() {
     var th3 = document.createElement("th");
     var th4 = document.createElement("th");
     var th5 = document.createElement("th");
+    // var th6 = document.createElement("th");
 
     th0.innerHTML = "Sr No";
     th1.innerHTML = "Name";
@@ -17,6 +18,7 @@ function userHead() {
     th3.innerHTML = "Mobile No";
     th4.innerHTML = "Address";
     th5.innerHTML = "Type";
+    // th6.innerHTML = "Controls";
 
     thead.appendChild(th0);
     thead.appendChild(th1);
@@ -24,6 +26,7 @@ function userHead() {
     thead.appendChild(th3);
     thead.appendChild(th4);
     thead.appendChild(th5);
+    // thead.appendChild(th6);
 }
 
 function orderHead() {
@@ -70,6 +73,9 @@ function getusers(sr,name, email, mobile, address, type) {
     var td3 = document.createElement("td");
     var td4 = document.createElement("td");
     var td5 = document.createElement("td");
+    // var btn = document.createElement('button');
+    // var text = document.createTextNode('Delete User');
+    
 
     td0.innerHTML = sr;
     td1.innerHTML = name;
@@ -77,6 +83,12 @@ function getusers(sr,name, email, mobile, address, type) {
     td3.innerHTML = mobile;
     td4.innerHTML = address;
     td5.innerHTML = type;
+    // btn.setAttribute("id", sr);
+    // btn.setAttribute(
+    //   "style",
+    //   "background: linear-gradient(45deg, wheat, red);"
+    // );
+    // btn.appendChild(text);
 
     trow.appendChild(td0);
     trow.appendChild(td1);
@@ -84,6 +96,8 @@ function getusers(sr,name, email, mobile, address, type) {
     trow.appendChild(td3);
     trow.appendChild(td4);
     trow.appendChild(td5);
+    // trow.appendChild(btn);
+    
 
     tbody.appendChild(trow);
 }

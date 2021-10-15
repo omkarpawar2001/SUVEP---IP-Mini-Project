@@ -5,8 +5,11 @@ import { userHead, orderHead, feedHead, getusers, getorders, getfeed } from './t
 document.getElementById("users").onclick = usersData;
 // document.getElementById("orders").onclick = ordersData;
 document.getElementById("feedback").onclick = feedData;
-// var tableClear = document.getElementById("table").innerHTML = "";
 
+
+// var tableClear = document.getElementById("table").innerHTML = "";
+const emails = [];
+var table = document.getElementById('table');
 function usersData() {
     clearTable();
     userHead();
@@ -27,10 +30,11 @@ function usersData() {
                         userdata.Type
                     );
                     i++;
+                    emails.push(userdata.Email);
                 }
-                
-
             });
+            // console.log(emails);
+            // console.log($("#table td").closest("tr").length);
         })
         .catch((error) => {
             console.log("Error getting documents: ", error);
