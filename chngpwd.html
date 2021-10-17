@@ -34,7 +34,7 @@
 
         .sidenav {
             height: 100%;
-            background-image:  linear-gradient(to right, #000428 0%, #2374bb  51%, #000428  100%);
+            /* background-image:  linear-gradient(to right, #000428 0%, #2374bb  51%, #000428  100%); */
             overflow-x: hidden;
             padding-top: 20px;
         }
@@ -74,7 +74,7 @@
             }
 
             .login-form {
-                margin-top: 80%;
+                margin-top: 40%;
             }
 
             .register-form {
@@ -86,7 +86,7 @@
         .login-main-text {
             margin-top: 20%;
             padding: 60px;
-            color: #fff;
+            /* color: #fff; */
         }
 
         .login-main-text h2 {
@@ -102,43 +102,90 @@
     width: 460px;
     height: 400px;
 }
+.login-text{
+    margin-left: 20px;
+}
+.custom_nav{
+    position: fixed;
+    font-size: small;
+    box-shadow: 0px 2px 12px rgba(226, 223, 223, 0.3);
+    padding-left: 15px;
+    padding-right: 15px;
+    flex-basis: 100%;
+    flex-grow: 0;
+    align-items: center;
+    /*margin-left: 15px;
+    margin-right: 25px;*/
+    left: 0px;
+    right: 0px;
+}
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom_nav">
-        <div class="container">
-            <div class="vertical-center">
-                <a class="navbar-brand" href="dash.html">
-                    <img src="img/logo.png" class="d-inline-block align-top logo rounded-circle" alt="">
-                    SUVEP
-                </a>
-            </div>
+    <!-- Navbar Snippet -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom_nav ">
+    <div class="container-fluid float-end">
+
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" class="d-inline-block logo rounded-circle" alt="" width=5% height=5%>
+                <span class="logo-text">SUVEP </span>
+            </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
             </ul>
-
             <div class="d-flex">
-                <div class="btn btn-design" id="logout"
-                    onclick=" var allCookies = document.cookie.split(';');  for (var i = 0; i < allCookies.length; i++){document.cookie = allCookies[i] + '=;expires=' + new Date(0).toUTCString();}  window.location.href='/index.html'; ">
-                    Logout
-                </div>
+                <a href="#" class="btn btn-sm linkbtn">How it works ?
+                </a>
             </div>
-
-
+            <div class="d-flex">
+                <a href="#" class="btn btn-sm linkbtn">Shipping and Returns </a>
+            </div>
+            <div class="d-flex">
+                <a href="contact-us.html" class="btn btn-sm linkbtn">Contact Us </a>
+            </div>
+            <div class="d-flex">
+                <a href="contact-us.html" class="btn btn-sm linkbtn">About Us </a>
+            </div>
+            <!-- <div class="d-flex"><a href="index.html" class="home-icon"><i class="fa fa-home fa-2x"></i></a></a>
+            </div> -->
+            <div class="d-flex">
+                <a href="login.html" class="btn btn-sm btn-design">Login </a>
+            </div>
         </div>
+    </div>
+</nav>
 
-    </nav>
     <!-- Actual Code -->
     <div class="sidenav">
-        <div class="login-main-text">
-            <h1>SUVEP<br> Change Password</h1>
-            <p>You can change your password for security reasons or reset it if you forget it.</p>
+        
+        <div class="d-flex flex-column align-items-center text-center">
+            <div class="login-main-text">
+            <img src="/img/change-password.jfif" alt="">
+        </div>
+            <div class="mt-3">
+                <h4 id="name1"></h4>
+                <p class="text-secondary mb-1" id="type"></p>
+                <p class="text-muted font-size-sm" id="address"></p>
+            </div>
         </div>
     </div>
     <div class="main">
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
 
+
+                <div class="login-text">
+                    <h1>User Account </h1>
+                        <h4> Change Password</h4>
+                    <p>You can change your password for security reasons or reset it if you forget it.</p>
+                </div>
                     <div class="form-group" style="margin: 20px;">
                         <label>Current Password</label>
                         <input type="password" id="current" class="form-control" placeholder="Current Password">

@@ -193,8 +193,8 @@ height: 150px;
     width: 90px;
 }
 .linkbtn:hover{
-    background: blue;
-    color: white;
+    background: #A40E4C;
+    color: #D7FCD4;
 }
 .container{
     margin: 0;
