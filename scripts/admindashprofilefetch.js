@@ -4,6 +4,7 @@ import { db } from "./firebase_config.js";
 
 window.onload = dashpic;
 
+
 function dashpic() {
   // var url = document.location.href,
   //   params = url.split('?')[1].split('&'),
