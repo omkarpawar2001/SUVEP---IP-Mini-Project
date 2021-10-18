@@ -79,18 +79,19 @@ db.collection("users")
             url //Edit this for product picture
           );
         });
-      // for (var j = 1; j < array.length; j++) {
-      //   while (parseInt(document.getElementById("quan" + j).innerHTML) > 0) {
-      //     document.getElementById("plus" + j).onclick = () => {
-      //       document.getElementById("quan" + j).innerHTML =
-      //         parseInt(document.getElementById("quan" + j).innerHTML) + 1;
-      //     };
-      //     document.getElementById("minus" + j).onclick = () => {
-      //       document.getElementById("quan" + j).innerHTML =
-      //         parseInt(document.getElementById("quan" + j).innerHTML) - 1;
-      //     };
-      //   }
-      // }
+      document.getElementById('totalitems').innerHTML = array.length + " items";
+      for (var j = 1; j < array.length; j++) {
+        // while (parseInt(document.getElementById("quan" + j).innerHTML) > 0) {
+          document.getElementById("plus" + j).onclick = () => {
+            document.getElementById("quan" + j).innerHTML =
+              parseInt(document.getElementById("quan" + j).innerHTML) + 1;
+          };
+          document.getElementById("minus" + j).onclick = () => {
+            document.getElementById("quan" + j).innerHTML =
+              parseInt(document.getElementById("quan" + j).innerHTML) - 1;
+          };
+        // }
+      }
     });
 
     // console.log(emails);
