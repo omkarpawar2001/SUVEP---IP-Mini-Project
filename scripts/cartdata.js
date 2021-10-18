@@ -1,8 +1,11 @@
 import { db, storage } from "./firebase_config.js";
+var i = 0;
+var array = [];
 db.collection("users")
   .get()
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
+      i++;
       var cartdata = document.getElementById("cartdata");
       var divborder = document.createElement("div");
       var divalign = document.createElement("div");
@@ -27,10 +30,13 @@ db.collection("users")
       // col2
       btnminus.setAttribute("class", "btn-outline-secondary plus-minus");
       counttag.setAttribute("class", "border");
+      counttag.setAttribute("id", "quan" + i);
       //Edit this for quantity
       btnplus.setAttribute("class", "btn-outline-success plus-minus");
       btnplus.innerHTML = "+";
+      btnplus.setAttribute("id", "plus" + i);
       btnminus.innerHTML = "-";
+      btnminus.setAttribute("id", "minus" + i);
       col2.setAttribute("class", "col");
       col2.appendChild(btnminus);
       col2.appendChild(counttag);
@@ -61,7 +67,8 @@ db.collection("users")
       // doc.data() is never undefined for query doc snapshots
       const userdata = doc.data();
       divtitle.innerHTML = userdata.Name;
-      counttag.innerHTML = 4;
+      array.push(userdata.Name);
+      counttag.innerHTML = 1;
       col3.innerHTML = "&#8377; " + "999" + " /-";
       storage
         .ref(userdata.Email + "/profileimg")
@@ -72,6 +79,18 @@ db.collection("users")
             url //Edit this for product picture
           );
         });
+      // for (var j = 1; j < array.length; j++) {
+      //   while (parseInt(document.getElementById("quan" + j).innerHTML) > 0) {
+      //     document.getElementById("plus" + j).onclick = () => {
+      //       document.getElementById("quan" + j).innerHTML =
+      //         parseInt(document.getElementById("quan" + j).innerHTML) + 1;
+      //     };
+      //     document.getElementById("minus" + j).onclick = () => {
+      //       document.getElementById("quan" + j).innerHTML =
+      //         parseInt(document.getElementById("quan" + j).innerHTML) - 1;
+      //     };
+      //   }
+      // }
     });
 
     // console.log(emails);
