@@ -1,20 +1,31 @@
-{
-  /* <div class="row border-top border-bottom">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="/img/penstand1.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted">Shirt</div>
-                            <div class="row">Cotton T-shirt</div>
-                        </div>
-                        <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-                        <div class="col">&euro; 44.00 <button class="close" onclick="window.location.reload();">&#10005;</button></div>
-                    </div>
-</div> */
-}
+import { cartData } from "./cartdata.js";
+import { db, storage } from "./firebase_config.js";
 
-
-// import {  userHead,  orderHead,  feedHead,  getusers,  getorders,  getfeed,} from "./tableheaders.js";
-
-window.onload = cartData;
-
+var pic,title,quantity,price;
+db.collection("users")
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+        const userdata = doc.data();
+        title = userdata.Name;
+        quantity = 4;
+        price = "999"
+        storage
+          .ref(userdata.Email + "/profileimg")
+          .getDownloadURL()
+            .then((url) => {
+                console.log(url);
+                cartData(url, title, quantity, price);
+          });
+        
+    });
+      
+      
+    // console.log(emails);
+    // console.log($("#table td").closest("tr").length);
+  })
+  .catch((error) => {
+    console.log("Error getting documents: ", error);
+  });
 

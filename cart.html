@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/logo.PNG">
+    <script type="module" src="scripts/cart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -244,7 +250,7 @@
                     </div>
                 </div> -->
                 <div id="cartdata">
-                    <div class="row  border-bottom">
+                    <!-- <div class="row  border-bottom">
                         <div class="row main align-items-center">
                             <div class="col-2"><img class="img-fluid" src="/img/penstand1.jpg"></div>
                             <div class="col">
@@ -254,33 +260,10 @@
                                     class="border">1</a><button class="btn-outline-success plus-minus" id="incr">+</button> </div>
                             <div class="col">&#8377; 44.00 <button class="close btn-danger">&#10005;</button></div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 
 
-                <div class="row border-bottom">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="/img/penstand1.jpg"></div>
-                        <div class="col">
-                            <div class="row">Cotton T-shirt</div>
-                        </div>
-                        <div class="col"> <button class="btn-outline-secondary plus-minus">-</button><a href="#"
-                                class="border">1</a><button class="btn-outline-success plus-minus">+</button> </div>
-                        <div class="col">&#8377; 44.00 <button class="close btn-danger">&#10005;</button></div>
-                    </div>
-                </div>
-
-                <div class="row border-bottom">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="/img/penstand1.jpg"></div>
-                        <div class="col">
-                            <div class="row">Cotton T-shirt</div>
-                        </div>
-                        <div class="col"> <button class="btn-outline-secondary plus-minus">-</button><a href="#"
-                                class="border">1</a><button class="btn-outline-success plus-minus">+</button> </div>
-                        <div class="col">&#8377; 44.00 <button class="close btn-danger">&#10005;</button></div>
-                    </div>
-                </div>
                 
                 <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
             </div>
