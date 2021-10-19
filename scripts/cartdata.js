@@ -1,7 +1,7 @@
 import { db, storage } from "./firebase_config.js";
 var i = 0;
 var array = [];
-
+var email = [];
 db.collection("users")
   .get()
   .then((querySnapshot) => {
@@ -21,20 +21,29 @@ db.collection("users")
       var counttag = document.createElement("a");
       var pricetag = document.createElement("a");
       var btnclose = document.createElement("button");
-      
 
       const userdata = doc.data();
       var price = userdata.MobileNo;
+      
+      email.push(userdata.Email);
+      console.log(email);
       // col3
       btnclose.setAttribute("class", "close btn-danger");
+      btnclose.setAttribute("id", "close" + i);
       btnclose.innerHTML = "&#10005;";
+      btnclose.setAttribute(
+        "onclick",
+        "var close = document.getElementById('close" + i + "'); \
+        if(close.clicked==true){\
+          console.log('"+ email[i - 1] + "');"+ db.collection("orders").doc('abc@gmail.com').delete().then(() => {})+"}"
+      );
+
       // pricetag.setAttribute("class", "border");
       pricetag.setAttribute("id", "price" + i);
       col3.setAttribute("class", "col");
       //Edit this for price
-      
+
       col3.appendChild(pricetag);
-      
 
       // col2
       btnminus.setAttribute("class", "btn-outline-secondary plus-minus");
@@ -53,7 +62,9 @@ db.collection("users")
           var price = document.getElementById('price" +
           i +
           "');\
-          price.innerHTML = "+price+"/(parseInt(quan.innerHTML));\
+          price.innerHTML = " +
+          price +
+          "/(parseInt(quan.innerHTML));\
         }\
         else{ alert('Minimum Count Reached!!')}\
         \
@@ -61,12 +72,12 @@ db.collection("users")
       );
       counttag.setAttribute("class", "border");
       counttag.setAttribute("id", "quan" + i);
-      
+
       //Edit this for quantity
       btnplus.setAttribute("class", "btn-outline-success plus-minus");
       btnplus.innerHTML = "+";
       btnplus.setAttribute("id", "plus" + i);
-      const p = btnplus.getAttribute('id');
+      const p = btnplus.getAttribute("id");
       console.log(p);
       btnplus.setAttribute(
         "onclick",
@@ -83,20 +94,21 @@ db.collection("users")
           var price = document.getElementById('price" +
           i +
           "');\
-          price.innerHTML = "+price+"*(parseInt(quan.innerHTML)+1);\
+          price.innerHTML = " +
+          price +
+          "*(parseInt(quan.innerHTML)+1);\
         }\
         else{ alert('Maximum Count Reached!!')}\
         \
         "
       );
+
       btnminus.innerHTML = "-";
       btnminus.setAttribute("id", "minus" + i);
       col2.setAttribute("class", "col");
       col2.appendChild(btnminus);
       col2.appendChild(counttag);
       col2.appendChild(btnplus);
-
-      
 
       // col1
       col1.setAttribute("class", "col");
@@ -121,14 +133,14 @@ db.collection("users")
       cartdata.appendChild(divborder);
 
       // doc.data() is never undefined for query doc snapshots
-      
+
       divtitle.innerHTML = userdata.Name;
       array.push(userdata.Name);
       counttag.innerHTML = 1;
-      
+
       // col3.innerHTML = "&#8377; ";
       pricetag.innerHTML = userdata.MobileNo;
-      
+
       col3.innerHTML += " /-";
       col3.appendChild(btnclose);
       storage
@@ -153,7 +165,6 @@ db.collection("users")
       //     };
       //   // }
       // }
-      
     });
 
     // console.log(emails);
@@ -162,5 +173,3 @@ db.collection("users")
   .catch((error) => {
     console.log("Error getting documents: ", error);
   });
-
-  
