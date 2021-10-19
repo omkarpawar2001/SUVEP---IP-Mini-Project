@@ -24,7 +24,7 @@ db.collection("users")
       
 
       const userdata = doc.data();
-      console.log(pr.innerHTML);
+      var price = userdata.MobileNo;
       // col3
       btnclose.setAttribute("class", "close btn-danger");
       btnclose.innerHTML = "&#10005;";
@@ -49,12 +49,11 @@ db.collection("users")
           "');\
         if(parseInt(quan.innerHTML)>1)\
         {\
-          var pr = parseInt(document.getElementById('pr').innerHTML);\
           quan.innerHTML = parseInt(quan.innerHTML)-1;\
           var price = document.getElementById('price" +
           i +
           "');\
-          price.innerHTML = pr/(parseInt(quan.innerHTML)+1);\
+          price.innerHTML = "+price+"/(parseInt(quan.innerHTML));\
         }\
         else{ alert('Minimum Count Reached!!')}\
         \
@@ -84,10 +83,7 @@ db.collection("users")
           var price = document.getElementById('price" +
           i +
           "');\
-          var prele = document.getElementById('pr');\
-          console.log(prele.innerHTML);\
-          \
-          \
+          price.innerHTML = "+price+"*(parseInt(quan.innerHTML)+1);\
         }\
         else{ alert('Maximum Count Reached!!')}\
         \
