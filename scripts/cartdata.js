@@ -1,6 +1,7 @@
 import { db, storage } from "./firebase_config.js";
 var i = 0;
 var array = [];
+
 db.collection("users")
   .get()
   .then((querySnapshot) => {
@@ -18,29 +19,88 @@ db.collection("users")
       var btnplus = document.createElement("button");
       var btnminus = document.createElement("button");
       var counttag = document.createElement("a");
+      var pricetag = document.createElement("a");
       var btnclose = document.createElement("button");
+      
 
+      const userdata = doc.data();
+      console.log(pr.innerHTML);
       // col3
       btnclose.setAttribute("class", "close btn-danger");
       btnclose.innerHTML = "&#10005;";
+      // pricetag.setAttribute("class", "border");
+      pricetag.setAttribute("id", "price" + i);
       col3.setAttribute("class", "col");
       //Edit this for price
-      col3.appendChild(btnclose);
+      
+      col3.appendChild(pricetag);
+      
 
       // col2
       btnminus.setAttribute("class", "btn-outline-secondary plus-minus");
+      btnminus.setAttribute(
+        "onclick",
+        "console.log(" +
+          i +
+          ");    \
+        \
+        var quan = document.getElementById('quan" +
+          i +
+          "');\
+        if(parseInt(quan.innerHTML)>1)\
+        {\
+          var pr = parseInt(document.getElementById('pr').innerHTML);\
+          quan.innerHTML = parseInt(quan.innerHTML)-1;\
+          var price = document.getElementById('price" +
+          i +
+          "');\
+          price.innerHTML = pr/(parseInt(quan.innerHTML)+1);\
+        }\
+        else{ alert('Minimum Count Reached!!')}\
+        \
+        "
+      );
       counttag.setAttribute("class", "border");
       counttag.setAttribute("id", "quan" + i);
+      
       //Edit this for quantity
       btnplus.setAttribute("class", "btn-outline-success plus-minus");
       btnplus.innerHTML = "+";
       btnplus.setAttribute("id", "plus" + i);
+      const p = btnplus.getAttribute('id');
+      console.log(p);
+      btnplus.setAttribute(
+        "onclick",
+        "console.log(" +
+          i +
+          ");    \
+        var quan = document.getElementById('quan" +
+          i +
+          "');\
+        if(parseInt(quan.innerHTML)<=4)\
+        {\
+          quan.innerHTML = parseInt(quan.innerHTML)+1;\
+          var col3 = document.getElementById('col3');\
+          var price = document.getElementById('price" +
+          i +
+          "');\
+          var prele = document.getElementById('pr');\
+          console.log(prele.innerHTML);\
+          \
+          \
+        }\
+        else{ alert('Maximum Count Reached!!')}\
+        \
+        "
+      );
       btnminus.innerHTML = "-";
       btnminus.setAttribute("id", "minus" + i);
       col2.setAttribute("class", "col");
       col2.appendChild(btnminus);
       col2.appendChild(counttag);
       col2.appendChild(btnplus);
+
+      
 
       // col1
       col1.setAttribute("class", "col");
@@ -65,11 +125,16 @@ db.collection("users")
       cartdata.appendChild(divborder);
 
       // doc.data() is never undefined for query doc snapshots
-      const userdata = doc.data();
+      
       divtitle.innerHTML = userdata.Name;
       array.push(userdata.Name);
       counttag.innerHTML = 1;
-      col3.innerHTML = "&#8377; " + "999" + " /-";
+      
+      // col3.innerHTML = "&#8377; ";
+      pricetag.innerHTML = userdata.MobileNo;
+      
+      col3.innerHTML += " /-";
+      col3.appendChild(btnclose);
       storage
         .ref(userdata.Email + "/profileimg")
         .getDownloadURL()
@@ -79,19 +144,20 @@ db.collection("users")
             url //Edit this for product picture
           );
         });
-      document.getElementById('totalitems').innerHTML = array.length + " items";
-      for (var j = 1; j < array.length; j++) {
-        // while (parseInt(document.getElementById("quan" + j).innerHTML) > 0) {
-          document.getElementById("plus" + j).onclick = () => {
-            document.getElementById("quan" + j).innerHTML =
-              parseInt(document.getElementById("quan" + j).innerHTML) + 1;
-          };
-          document.getElementById("minus" + j).onclick = () => {
-            document.getElementById("quan" + j).innerHTML =
-              parseInt(document.getElementById("quan" + j).innerHTML) - 1;
-          };
-        // }
-      }
+      document.getElementById("totalitems").innerHTML = array.length + " items";
+      // for (var j = 1; j < array.length; j++) {
+      //   // while (parseInt(document.getElementById("quan" + j).innerHTML) > 0) {
+      //     document.getElementById("plus" + j).onclick = () => {
+      //       document.getElementById("quan" + j).innerHTML =
+      //         parseInt(document.getElementById("quan" + j).innerHTML) + 1;
+      //     };
+      //     document.getElementById("minus" + j).onclick = () => {
+      //       document.getElementById("quan" + j).innerHTML =
+      //         parseInt(document.getElementById("quan" + j).innerHTML) - 1;
+      //     };
+      //   // }
+      // }
+      
     });
 
     // console.log(emails);
@@ -100,3 +166,5 @@ db.collection("users")
   .catch((error) => {
     console.log("Error getting documents: ", error);
   });
+
+  
