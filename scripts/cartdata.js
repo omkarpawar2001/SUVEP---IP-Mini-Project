@@ -45,14 +45,21 @@ db.collection("users")
       btnclose.onclick = function () {
         var index = parseInt(btnclose.getAttribute('name'));
         
-        alert(email[index - 1]);
-        db.collection("orders")
+        var remove = db.collection("orders")
           .doc(email[index-1])
           .delete()
           .then(() => {
-            alert(email[i - 1] +
-              "deleted");
+
           });
+        remove.then(() => {
+          Swal.fire(
+            "Remove Item",
+            "Item removed from cart..!",
+            "success"
+          ).then(() => {
+            window.location.reload;
+          });
+        })
       }
 
       // pricetag.setAttribute("class", "border");
