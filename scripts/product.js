@@ -14,19 +14,20 @@ function insert() {
   var file3 = document.getElementById("filefield").files[2];
   var valid = productvalid(productcount, name, price, desc);
   if (valid == true) {
+    var email = getCookieLogin("email");
     const prod_data = {
       ProdName: name,
       ProdPrice: price,
       ProdDesc: desc,
     };
-    db.collection("products")
-      .doc(email)
+    db.collection("products").doc(email)
+      .collection("All Products").doc(name)
       .set(prod_data)
       .then(function () {
         console.log("Added to the database");
       });
     const storeageref = storage.ref();
-    var email = getCookieLogin("email");
+
     const upload1 = storeageref.child(email + "/" + name + "/productimg1");
     upload1.put(file1);
     const upload2 = storeageref.child(email + "/" + name + "/productimg2");
