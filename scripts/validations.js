@@ -27,6 +27,23 @@ function contactvalid(name,email,queries){
     }
 }
 
+function productvalid(productpic, name, price, desc) {
+    if (
+        productpic < 3 ||
+        productpic > 3||
+      name == "" ||
+      price == "" ||
+      desc == "" 
+    ) {
+      alert("Please fill all the fields and upload at least 3 product images");
+      return false;
+    } else if (price<10) {
+      alert("Please enter price above Rs. 10/-");
+    } else {
+      return true;
+    }
+}
+
 function emailvalid(email) {
     if (email == "") {
     } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
@@ -38,4 +55,4 @@ function emailvalid(email) {
 }
 
 
-export {registervalid,contactvalid,emailvalid}
+export { registervalid, contactvalid, emailvalid, productvalid };
