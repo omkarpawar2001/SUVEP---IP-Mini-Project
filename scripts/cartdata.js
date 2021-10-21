@@ -2,6 +2,15 @@ import { db, storage } from "./firebase_config.js";
 var i = 0;
 var array = [];
 var email = [];
+var close = [];
+function deleteProduct() {
+  db.collection("orders")
+    .doc("abc@gmail.com")
+    .delete()
+    .then(() => {
+      alert("deleted");
+    });
+}
 db.collection("users")
   .get()
   .then((querySnapshot) => {
@@ -24,19 +33,27 @@ db.collection("users")
 
       const userdata = doc.data();
       var price = userdata.MobileNo;
-      
+
       email.push(userdata.Email);
       console.log(email);
       // col3
       btnclose.setAttribute("class", "close btn-danger");
       btnclose.setAttribute("id", "close" + i);
+      btnclose.setAttribute("name", i);
       btnclose.innerHTML = "&#10005;";
-      btnclose.setAttribute(
-        "onclick",
-        "var close = document.getElementById('close" + i + "'); \
-        if(close.clicked==true){\
-          console.log('"+ email[i - 1] + "');"+ db.collection("orders").doc('abc@gmail.com').delete().then(() => {})+"}"
-      );
+
+      btnclose.onclick = function () {
+        var index = parseInt(btnclose.getAttribute('name'));
+        
+        alert(email[index - 1]);
+        db.collection("orders")
+          .doc(email[index-1])
+          .delete()
+          .then(() => {
+            alert(email[i - 1] +
+              "deleted");
+          });
+      }
 
       // pricetag.setAttribute("class", "border");
       pricetag.setAttribute("id", "price" + i);
