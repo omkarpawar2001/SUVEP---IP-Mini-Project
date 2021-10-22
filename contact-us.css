@@ -182,3 +182,7 @@ body{
   overflow-x: hidden;
   overflow-y: auto;
 }
+.form-select{
+  height: 50px !important;
+  border-radius: 6px !important;
+}

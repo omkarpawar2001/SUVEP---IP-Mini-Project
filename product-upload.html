@@ -21,6 +21,19 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
     <title>Product Upload Page </title>
+    <style>
+      .file-upload{
+  position: relative;
+  overflow: hidden;
+}
+.file-btn{
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+    </style>
   </head>
   <body>
 
@@ -70,46 +83,26 @@
 <div class="container">
     <div class="content">
       <div class="left-side">
-        <!-- <div class="address details">
-          <i class="fa fa-map-marker"></i>
-          <div class="topic">Address</div>
-          <div class="text-one">Surkhet, NP12</div>
-          <div class="text-two">Birendranagar 06</div>
-        </div> -->
-        <!-- <div class="phone details">
-          <i class="fa fa-phone"></i>
-          <div class="topic">Phone</div>
-          <div class="text-one">+0098 9893 5647</div>
-          <div class="text-two">+0096 3434 5678</div>
-        </div> -->
-        <!-- <div class="email details">
-          <i class="fa fa-envelope"></i>
-          <div class="topic">Email</div>
-          <div class="text-one">email@gmail.com</div>
-          <div class="text-two">info.email@gmail.com</div>
-        </div> -->
         <div class="frame">
             <div class="center">
-                <div class="title">
+                <div class="title" style="margin-left: 3.5rem;">
                     <h5>Upload Product images </h5>
                 </div>
         
                 <div class="dropzone margin" style="margin-left: 60px;">
                     <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
                     
-                    <input type="file" name="filefield" id = "filefield" multiple="multiple" >
+                    <!-- <input type="file" name="filefield" id = "filefield" multiple="multiple"> -->
+                    <div class="file btn btn-lg btn-light file-upload mt-4">
+                      Upload 
+                      <input type="file" name="filefield" id = "filefield" multiple="multiple" class="file-btn">
+                    </div>
                 </div>
         
                 <!-- <button type="button" class="btn" name="uploadbutton">Upload file</button> -->
         
             </div>
         </div>
-        <!-- original pen: https://codepen.io/roydigerhund/pen/ZQdbeN  -->
-        
-        <!-- NO JS ADDED YET -->
-        <!-- <div class="input-box">
-            <input type="file" id = "name" placeholder="Enter product name " style="margin-left: 160px; margin-top: 60px;">
-          </div> -->
       </div>
       <div class="right-side">
         <!-- <div class="topic-text">Send us a message</div>
