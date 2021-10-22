@@ -33,7 +33,11 @@ function uploadFile() {
 
         },
         (error) => {
-            console.log("error", error);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+            });
         }
     );
 }

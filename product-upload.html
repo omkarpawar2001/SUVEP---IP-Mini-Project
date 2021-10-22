@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="contact-us.css">
     <link rel="stylesheet" href="product-upload.scss">
     <link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
-    <script type="module" src="scripts/Contactus.js"></script>
+    <script type="module" src="scripts/product.js"></script>
 
     <!-- ----------------------Required Scripts----------------------- -->
 
@@ -97,7 +97,7 @@
                 <div class="dropzone margin" style="margin-left: 60px;">
                     <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
                     
-                    <input type="file" name="filefield" multiple="multiple" >
+                    <input type="file" name="filefield" id = "filefield" multiple="multiple" >
                 </div>
         
                 <!-- <button type="button" class="btn" name="uploadbutton">Upload file</button> -->
@@ -116,23 +116,22 @@
         <p>If you have any work from us or any types of quries related to us, you can send us message from here. It's our pleasure to help you.</p> -->
         <form action="#">
           <div class="input-box">
-            <input type="text" id = "name" placeholder="Enter product name ">
+            <input type="text" id = "prodname" placeholder="Enter product name ">
           </div>
           <div class="input-box">
-            <input type="number" placeholder="Enter product price (in Rupees) " id = "email">
-          </div>
-          <div class="input-box">
-            <input type="number" id = "name" placeholder="Enter product quantity ">
-          </div>
-          <div class="input-box">
-            <input type="text" id = "name" placeholder="Payment methods accepted ">
+            <input type="number" placeholder="Enter product price (in Rupees) " id = "prodprice">
           </div>
 
-          <style>
-            .dropdown {
-              position: relative;
-              display: inline-block;
-            }
+          <!-- <div class="input-box">
+            <input type="text" placeholder="" id = "email">
+          </div> -->
+          <!-- <div class="input-box">
+            <input type="text" id = "name" placeholder="Enter your name">
+          </div> -->
+          <!-- <div class="input-box">
+            <input type="text" placeholder="Enter your email" id = "email">
+          </div> -->
+          <!-- <div class="input-box message-box">
             
             .dropdown-content {
               display: none;
@@ -158,31 +157,29 @@
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul> -->
               
-              <div class="input-box">
-                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon" style="width: 98%!important;">
-                  <option selected>Select Category </option>
-                  <option value="One">One</option>
-                  <option value="Two">Two</option>
-                  <option value="Three">Three</option>
-                </select>
-              </div>
-              <script>
-                function getOption() {
-            selectElement = document.querySelector('#inputGroupSelect03');
-                      
-            output = 
-              selectElement.options[selectElement.selectedIndex].value;
-  
-            // document.querySelector('.output').textContent = output;
-            console.log("Output : "+document.getElementById("inputGroupSelect03").value);
-            
-        }
-              </script>
-           <!-- <button onclick="getOption()">
-            Check option
-        </button> -->
-          <div class="input-box textarea message-box">
-            <textarea id="queries" name="" rows="4" cols="50" placeholder="Enter product description : "></textarea>
+          <div class="input-box">
+            <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+              style="width: 98%!important;">
+              <option selected>Select Category </option>
+              <option value="One">One</option>
+              <option value="Two">Two</option>
+              <option value="Three">Three</option>
+            </select>
+          </div>
+          <script>
+            function getOption() {
+              selectElement = document.querySelector('#inputGroupSelect03');
+
+              output =
+                selectElement.options[selectElement.selectedIndex].value;
+
+              // document.querySelector('.output').textContent = output;
+              console.log("Output : " + document.getElementById("inputGroupSelect03").value);
+
+            }
+          </script>
+          <div  class="input-box textarea message-box">
+            <textarea id="proddesc" name="" rows="4" cols="50" placeholder="Enter product description  "></textarea>
             </form>
           </div>
           <div class="button">
