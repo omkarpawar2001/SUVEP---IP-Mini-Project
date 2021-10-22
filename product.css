@@ -180,3 +180,10 @@ body {
     width: 150px;
     border-radius: 0px !important
 }
+
+
+@media (min-width: 768px) {
+    .product-img {
+        width: 150px !important;
+    }
+  }

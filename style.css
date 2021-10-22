@@ -18,9 +18,10 @@ img {
 }
 
 /* sm */
-@media (min-width: 768px) {
-    img {
-        width: 150px;
+@media (max-width: 768px) {
+    .product-img {
+        width: 100px!important;
+        height: 150px!important;
     }
 }
 /* md */
@@ -387,3 +388,7 @@ section.copy p{
     height: 200px;
     width: 150px;
 }
+a{
+    text-decoration: none !important;
+}
+
