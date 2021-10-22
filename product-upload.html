@@ -134,8 +134,28 @@
             
               
           </div> -->
+          <div class="input-box">
+            <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+              style="width: 98%!important;">
+              <option selected>Select Category </option>
+              <option value="One">One</option>
+              <option value="Two">Two</option>
+              <option value="Three">Three</option>
+            </select>
+          </div>
+          <script>
+            function getOption() {
+              selectElement = document.querySelector('#inputGroupSelect03');
+
+              output =
+                selectElement.options[selectElement.selectedIndex].value;
+
+              // document.querySelector('.output').textContent = output;
+              console.log("Output : " + document.getElementById("inputGroupSelect03").value);
+
+            }
+          </script>
           <div  class="input-box textarea message-box">
-            <label for=""></label>
             <textarea id="proddesc" name="" rows="4" cols="50" placeholder="Enter product description  "></textarea>
             </form>
           </div>
