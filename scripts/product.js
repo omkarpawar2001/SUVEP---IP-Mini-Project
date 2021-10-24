@@ -16,18 +16,8 @@ function insert() {
   var valid = productvalid(productcount, name, price, desc);
   if (valid == true) {
     var email = getCookieLogin("email");
-    const prod_data = {
-      ProdName: name,
-      ProdPrice: price,
-      Category: category,
-      ProdDesc: desc,
-    };
-    db.collection("products").doc("All Products")
-      .collection(email).doc(name)
-      .set(prod_data)
-      .then(function () {
-        console.log("Added to the database");
-      });
+    
+    
     const storeageref = storage.ref();
 
     const upload1 = storeageref.child(email + "/products/" + name + "/productimg1");
@@ -39,8 +29,32 @@ function insert() {
     const upload3 = storeageref.child(
       email + "/products/" + name + "/productimg3"
     );
-    const task = upload3.put(file3);
-
+     upload3.put(file3);
+    const task = storage
+      .ref(email + "/products/" + name + "/productimg1")
+      .getDownloadURL()
+      .then((url) => {
+        console.log("url", url);
+        const prod_data = {
+          ProdName: name,
+          ProdPrice: price,
+          Category: category,
+          ProdDesc: desc,
+          ProdPic: url,
+        };
+        db
+          .collection("products")
+          .doc("All Products")
+          .collection(email)
+          .doc(name)
+          .set(prod_data)
+          .then(function () {
+            console.log("Added to the database");
+          });
+        
+      });
+    
+    
     task.then(
       Swal.fire(
         "Status",

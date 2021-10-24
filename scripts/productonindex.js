@@ -8,14 +8,9 @@ function indexpr() {
     var desc1 = document.getElementById("desc1");
     var price1 = document.getElementById("price1");
     
-    img1.setAttribute(
-      "src",
-      "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-    );
     
-    title1.innerHTML = "Hello123";
-    desc1.innerHTML = "nsjjwnd kjns nka dc nscdjnjan";
-    price1.innerHTML = "₹ "+233+" /-";
+    
+    
     
     var listRef = firebase.storage().ref();
     var urlarray = [];
@@ -23,19 +18,16 @@ function indexpr() {
     listRef
       .listAll()
         .then((res) => {
-          console.log(res)
             res.prefixes.forEach((folderRef) => {
                 folderRef.listAll().then((res) => {
-                    console.log(res.prefixes)
                     res.prefixes.forEach((x) => {
-                        console.log(x.listAll)
                         x.listAll().then((img) => {
                             img.prefixes.forEach((x) => {
                                 x.child("/productimg1").getDownloadURL().then((url) => {
-                                    console.log(url)
                                     urlarray.push(url);
-                                    console.log(urlarray);
+                                    // console.log(urlarray);
                                 });
+                            
                             })
                           
                         });
@@ -49,6 +41,27 @@ function indexpr() {
       .catch((error) => {
         // Uh-oh, an error occurred!
       });
+  
+  db.collection("products")
+    .doc("All Products")
+    .collection("d2019omkar.pawar@ves.ac.in")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        const userdata = doc.data();
+        img1.setAttribute(
+          "src",
+          userdata.ProdPic
+        );
+        title1.innerHTML = userdata.ProdName;
+        desc1.innerHTML = userdata.ProdDesc;
+        price1.innerHTML = "₹ " + userdata.ProdPrice + " /-";
+      });
+    })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
         
         // .then((url) => {
         // console.log("url", url);
