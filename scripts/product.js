@@ -9,6 +9,7 @@ function insert() {
   var name = document.getElementById("prodname").value;
   var price = document.getElementById("prodprice").value;
   var desc = document.getElementById("proddesc").value;
+  var category = document.getElementById("inputGroupSelect03").value;
   var file1 = document.getElementById("filefield").files[0];
   var file2 = document.getElementById("filefield").files[1];
   var file3 = document.getElementById("filefield").files[2];
@@ -18,10 +19,11 @@ function insert() {
     const prod_data = {
       ProdName: name,
       ProdPrice: price,
+      Category: category,
       ProdDesc: desc,
     };
-    db.collection("products").doc(email)
-      .collection("All Products").doc(name)
+    db.collection("products").doc("All Products")
+      .collection(email).doc(name)
       .set(prod_data)
       .then(function () {
         console.log("Added to the database");

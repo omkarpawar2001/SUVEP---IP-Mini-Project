@@ -17,12 +17,42 @@ function indexpr() {
     desc1.innerHTML = "nsjjwnd kjns nka dc nscdjnjan";
     price1.innerHTML = "₹ "+233+" /-";
     
-    storage
-        .ref("d2019omkar.pawar@ves.ac.in" + "/")
-        .getDownloadURL()
-        .then((url) => {
-        console.log("url", url);
-        // document.getElementById("picsm").setAttribute("src", url);
-        // document.getElementById("piclg").setAttribute("src", url);
+    var listRef = firebase.storage().ref();
+    var urlarray = [];
+    // Find all the prefixes and items.
+    listRef
+      .listAll()
+        .then((res) => {
+          console.log(res)
+            res.prefixes.forEach((folderRef) => {
+                folderRef.listAll().then((res) => {
+                    console.log(res.prefixes)
+                    res.prefixes.forEach((x) => {
+                        console.log(x.listAll)
+                        x.listAll().then((img) => {
+                            img.prefixes.forEach((x) => {
+                                x.child("/productimg1").getDownloadURL().then((url) => {
+                                    console.log(url)
+                                    urlarray.push(url);
+                                    console.log(urlarray);
+                                });
+                            })
+                          
+                        });
+                    })
+                })
+          // All the prefixes under listRef.
+          // You may call listAll() recursively on them.
         });
+        
+      })
+      .catch((error) => {
+        // Uh-oh, an error occurred!
+      });
+        
+        // .then((url) => {
+        // console.log("url", url);
+        // // document.getElementById("picsm").setAttribute("src", url);
+        // // document.getElementById("piclg").setAttribute("src", url);
+        // });
 }
