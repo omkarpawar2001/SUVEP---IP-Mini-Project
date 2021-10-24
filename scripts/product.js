@@ -28,11 +28,15 @@ function insert() {
       });
     const storeageref = storage.ref();
 
-    const upload1 = storeageref.child(email + "/" + name + "/productimg1");
+    const upload1 = storeageref.child(email + "/products/" + name + "/productimg1");
     upload1.put(file1);
-    const upload2 = storeageref.child(email + "/" + name + "/productimg2");
+    const upload2 = storeageref.child(
+      email + "/products/" + name + "/productimg2"
+    );
     upload2.put(file2);
-    const upload3 = storeageref.child(email + "/" + name + "/productimg3");
+    const upload3 = storeageref.child(
+      email + "/products/" + name + "/productimg3"
+    );
     const task = upload3.put(file3);
 
     task.then(
