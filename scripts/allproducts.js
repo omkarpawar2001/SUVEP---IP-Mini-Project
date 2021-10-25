@@ -1,50 +1,80 @@
-import { db, storage } from "./firebase_config.js";
+import { db} from "./firebase_config.js";
 
 window.onload = allproducts;
 
+
+
 function allproducts() {
-    
+  db.collection("products")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const userdata = doc.data();
+        console.log(userdata.ProdPic)
+        createCard(userdata.ProdPic, userdata.ProdName, userdata.ProdDesc, userdata.ProdPrice);
+      });
+    })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
+  
+
   // Working Code Down here
-  // db.collection("products")
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //       // doc.data() is never undefined for query doc snapshots
-  //       const userdata = doc.data();
-  //       img1.setAttribute(
-  //         "src",
-  //         userdata.ProdPic
-  //       );
-  //       title1.innerHTML = userdata.ProdName;
-  //       desc1.innerHTML = userdata.ProdDesc;
-  //       price1.innerHTML = "₹ " + userdata.ProdPrice + " /-";
-  //       console.log(userdata);
-  //     });
-  //   })
-  //   .catch((error) => {
-  //     console.log("Error getting documents: ", error);
-  //   });
+  //
 }
-{
-  /* <div class="col-12 col-md-6 col-lg-4">
-                        <div class="card mb-4">
-                            <img class="card-img-top" src="img/penstand1.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title" style="overflow: hidden;
-  text-overflow: ellipsis; white-space: nowrap;"><a href="product.html" title="View Product">Product title</a></h4>
-                                    <p class="card-text" align="justify" style="overflow: hidden;
-  text-overflow: ellipsis; white-space: nowrap;">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-                                    <div class="row mr-1 ml-1"
-                                        style="align-items: end; justify-content: space-between;">
-                                        <!-- <div class="row"> -->
-                                        <h5 class="font-weight-bold">₹220 </h5>
-                                        <!-- </div>
-                                <div class="col"> -->
-                                        <a href="#" class="btn btn-success">Add to cart</a>
-                                        <!-- </div> -->
-                                    </div>
-                            </div>
-                        </div>
-                    </div> */
+
+function createCard(img1, title, desc, price) {
+  var htmldiv = document.getElementById("mainrow");
+  var maindiv = document.createElement("div");
+  var carddiv = document.createElement("div");
+  var img = document.createElement("img");
+  var cardbody = document.createElement("div");
+  var h5 = document.createElement("h5");
+  var h52 = document.createElement("h5");
+  var atag = document.createElement("a");
+  var pcardtext = document.createElement("p");
+  var divrow = document.createElement("div");
+  var divcol = document.createElement("div");
+  var pricetag = document.createElement("p");
+
+  maindiv.setAttribute("class", "col-12 col-md-6 col-lg-4");
+  carddiv.setAttribute("class", "card mb-4");
+  img.setAttribute("class", "card-img-top");
+  img.setAttribute("src", img1);
+  img.setAttribute("style", "    height: 400px;");
+  cardbody.setAttribute("class", "card-body");
+  h5.setAttribute("class", "card-title");
+  h5.setAttribute("style", "overflow: hidden;  text-overflow: ellipsis; white-space: nowrap;");
+  pcardtext.setAttribute("class", "card-text");
+  pcardtext.setAttribute("style", "overflow: hidden;  text-overflow: ellipsis; white-space: nowrap;");
+  divrow.setAttribute("class", "row");
+  divcol.setAttribute("class", "col");
+  pricetag.setAttribute("class", "font-weight-bold");
+
+  pricetag.innerHTML = "₹ " + price + " /-";
+  h52.appendChild(pricetag);
+  divcol.appendChild(h52);
+  
+  divrow.appendChild(divcol);
+  pcardtext.innerHTML = desc;
+
+  atag.innerHTML = title;
+  atag.setAttribute("href","product.html?product="+title)
+  h5.appendChild(atag);
+
+  cardbody.appendChild(h5);
+  cardbody.appendChild(pcardtext);
+  cardbody.appendChild(divrow);
+
+  
+
+  carddiv.appendChild(img);
+  carddiv.appendChild(cardbody);
+
+  maindiv.appendChild(carddiv);
+
+  htmldiv.appendChild(maindiv);
+
+
+
 }

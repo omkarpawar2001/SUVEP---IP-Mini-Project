@@ -8,6 +8,11 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <!-- <link rel="stylesheet" href="view-all-products.css"> -->
     <link rel="stylesheet" href="style.css">
@@ -79,31 +84,8 @@
 </div> -->
     <div class="container">
         <div class="row ml-2">
-            <div class="col-12 col-sm-3">
-                <div class="card bg-light mb-3">
-                    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories
-                    </div>
-                    <ul class="list-group category_block">
-                        <li class="list-group-item"><a href="category.html">Whats New </a></li>
-                        <li class="list-group-item"><a href="category.html">Stationery </a></li>
-                        <li class="list-group-item"><a href="category.html">Morbi leo risus</a></li>
-                        <li class="list-group-item"><a href="category.html">Porta ac consectetur ac</a></li>
-                        <li class="list-group-item"><a href="category.html">Vestibulum at eros</a></li>
-                    </ul>
-                </div>
-                <!-- <div class="card bg-light mb-3">
-                <div class="card-header bg-success text-white text-uppercase">Last product</div>
-                <div class="card-body">
-                    <img class="img-fluid" src="img/penstand1.jpg" />
-                    <h5 class="card-title">Hand Made Pen Stand </h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <p class="bloc_left_price">₹220</p>
-                </div>
-            </div> -->
-            </div>
             <div class="col">
-                <div class="row mr-2" id="mainrow">
-
+                <div class="row mr-2 ml-2" id="mainrow">
                     
 
                 </div>
