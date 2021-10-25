@@ -9,19 +9,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="product.css">
+    
     <!-- <link rel="stylesheet" href="product.css"> -->
     <!-- <link rel="stylesheet" href="../../font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css"> -->
     <!-- <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
     
     <title>Product Details | SUVEP </title>
+    <script type="module" src="scripts/productpg.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function changeImage(element) {
-            var main_prodcut_image = document.getElementById('main_product_image');
+            var main_prodcut_image = document.getElementById('mainimg');
             main_prodcut_image.src = element.src;
         }
-
-
     </script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -79,15 +84,15 @@
             <div class="row g-0">
                 <div class="col-md-6 border-end">
                     <div class="d-flex flex-column justify-content-center">
-                        <div class="main_image"> <img src="img/penstand1.jpg" id="main_product_image" width="350">
+                        <div class="main_image"> <img src="" width="350" id="mainimg">
                         </div>
                         <div class="thumbnail_images">
                             <ul id="thumbnail" style="margin-right: 28px;">
-                                <li><img onclick="changeImage(this)" src="img/penstand1.jpg" width="70"
+                                <li><img onclick="changeImage(this)" src="" width="70"
                                         class="product-img" id="img1"></li>
-                                <li><img onclick="changeImage(this)" src="img/penstand2.jpg" width="70"
+                                <li><img onclick="changeImage(this)" src="" width="70"
                                         class="product-img" id="img2"></li>
-                                <li><img onclick="changeImage(this)" src="img/penstand3.jpg" width="70"
+                                <li><img onclick="changeImage(this)" src="" width="70"
                                         class="product-img" id="img3"></li>
                             </ul>
                         </div>
@@ -97,12 +102,10 @@
                     <div class="p-3 right-side">
                         <!-- <!-- <div class="d-flex justify-content-between align-items-center"> -->
 
-                        <h2 class="ml-3 mr-3">hello</h2>
+                        <h2 class="ml-3 mr-3" id="name"></h2>
 
-                        <h3 class="mt-4 ml-3 mr-3">₹ 430.99</h3>
-                        <h5 align="justify" class="mt-5 mb-5 ml-3 mr-3 text-secondary">Equipped with an ergonomically designed handle, this Pigeon pressure cooker is made from high-grade virgin aluminium
-                        that gives it a durable body. While the precision weight value helps save time and energy, the metallic safety plug
-                        ensures a safe cooking experience.</h5>
+                        <h3 class="mt-4 ml-3 mr-3" id="price"></h3>
+                        <h5 align="justify" class="mt-5 mb-5 ml-3 mr-3 text-secondary" id="desc"></h5>
                         <a href="#" class="ml-3 mr-3 btn btn-success">Go to Login Page</a>
                     </div>
                 </div>
