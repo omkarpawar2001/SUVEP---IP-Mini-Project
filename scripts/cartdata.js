@@ -1,8 +1,9 @@
+import { getCookieLogin } from "./cookiestore.js";
 import { db, storage } from "./firebase_config.js";
 var i = 0;
 var array = [];
-var email = [];
-var close = [];
+var emails = [];
+var prices = [];
 function deleteProduct() {
   db.collection("orders")
     .doc("abc@gmail.com")
@@ -11,10 +12,17 @@ function deleteProduct() {
       alert("deleted");
     });
 }
-db.collection("users")
+var email = getCookieLogin("email");
+
+
+
+db.collection("cart")
+  .doc("All Products")
+  .collection("email")
   .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
+  .then((doc) => {
+    doc.forEach((querySnapshot) => {
+      let userdata = querySnapshot.data();
       i++;
       var cartdata = document.getElementById("cartdata");
       var divborder = document.createElement("div");
@@ -31,11 +39,11 @@ db.collection("users")
       var pricetag = document.createElement("a");
       var btnclose = document.createElement("button");
 
-      const userdata = doc.data();
-      var price = userdata.MobileNo;
+      var price = userdata.Price;
 
-      email.push(userdata.Email);
-      console.log(email);
+      emails.push(userdata.ProdName);
+      console.log(emails);
+      prices.push(price);
       // col3
       btnclose.setAttribute("class", "close btn-danger");
       btnclose.setAttribute("id", "close" + i);
@@ -43,24 +51,23 @@ db.collection("users")
       btnclose.innerHTML = "&#10005;";
 
       btnclose.onclick = function () {
-        var index = parseInt(btnclose.getAttribute('name'));
-        
-        var remove = db.collection("orders")
-          .doc(email[index-1])
-          .delete()
-          .then(() => {
+        var index = parseInt(btnclose.getAttribute("name"));
 
-          });
+        var remove = db
+          .collection("cart")
+          .doc("All Products")
+          .collection("email")
+          .doc(emails[i-1])
+          .delete()
+          .then(() => {});
         remove.then(() => {
-          Swal.fire(
-            "Remove Item",
-            "Item removed from cart..!",
-            "success"
-          ).then(() => {
-            window.location.reload;
-          });
-        })
-      }
+          Swal.fire("Remove Item", "Item removed from cart..!", "success").then(
+            () => {
+              window.location.reload;
+            }
+          );
+        });
+      };
 
       // pricetag.setAttribute("class", "border");
       pricetag.setAttribute("id", "price" + i);
@@ -86,9 +93,9 @@ db.collection("users")
           var price = document.getElementById('price" +
           i +
           "');\
-          price.innerHTML = " +
+          price.innerHTML =" +
           price +
-          "/(parseInt(quan.innerHTML));\
+          "*(parseInt(quan.innerHTML));\
         }\
         else{ alert('Minimum Count Reached!!')}\
         \
@@ -120,7 +127,7 @@ db.collection("users")
           "');\
           price.innerHTML = " +
           price +
-          "*(parseInt(quan.innerHTML)+1);\
+          "*(parseInt(quan.innerHTML));\
         }\
         else{ alert('Maximum Count Reached!!')}\
         \
@@ -158,25 +165,29 @@ db.collection("users")
 
       // doc.data() is never undefined for query doc snapshots
 
-      divtitle.innerHTML = userdata.Name;
-      array.push(userdata.Name);
+      divtitle.innerHTML = userdata.ProdName;
+      array.push(userdata.ProdName);
       counttag.innerHTML = 1;
 
       // col3.innerHTML = "&#8377; ";
-      pricetag.innerHTML = userdata.MobileNo;
+      pricetag.innerHTML = "₹ "+price;
 
       col3.innerHTML += " /-";
       col3.appendChild(btnclose);
-      storage
-        .ref(userdata.Email + "/profileimg")
-        .getDownloadURL()
-        .then((url) => {
-          imgtag.setAttribute(
-            "src",
-            url //Edit this for product picture
-          );
-        });
+
+      imgtag.setAttribute("src", userdata.ProdPic); //Edit this for product picture
+
       document.getElementById("totalitems").innerHTML = array.length + " items";
+      document.getElementById("totalcartitems").innerHTML =
+        array.length + " items";
+      var carttotal=0;
+      for (var i = 0; i < prices.length; i++) {
+        console.log(prices[i]);
+        carttotal += parseInt(prices[i]);
+      }
+      console.log(carttotal);
+      document.getElementById("carttotalfinal").innerHTML = "₹ "+ carttotal+" /-";
+
       // for (var j = 1; j < array.length; j++) {
       //   // while (parseInt(document.getElementById("quan" + j).innerHTML) > 0) {
       //     document.getElementById("plus" + j).onclick = () => {
@@ -190,10 +201,12 @@ db.collection("users")
       //   // }
       // }
     });
+  })
+  .catch((error) => {
+    alert("Your Cart is Empty");
+    console.log("Error getting documents: ", error);
+  });
 
     // console.log(emails);
     // console.log($("#table td").closest("tr").length);
-  })
-  .catch((error) => {
-    console.log("Error getting documents: ", error);
-  });
+  
