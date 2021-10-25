@@ -1,5 +1,8 @@
+import { getCookieLogin } from "./cookiestore.js";
 import { db, storage } from "./firebase_config.js";
 window.onload = productpg;
+var btn = document.getElementById("addtocart");
+btn.onclick = addToCart;
 
 function productpg() {
   //     var params=[];
@@ -80,4 +83,54 @@ function productpg() {
         console.log("Error getting documents: ", error);
       });
   }
+}
+
+function addToCart() {
+  console.log("Clicked");
+  var email = getCookieLogin("email");
+  var prodname = document.getElementById("name").innerHTML;
+  db.collection("products")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const userdata = doc.data();
+        console.log(userdata.ProdName);
+        console.log(prodname);
+        if (userdata.ProdName == prodname) {
+          var productdata = {
+            ProdPic: userdata.ProdPic,
+            ProdName: userdata.ProdName,
+            Quantity: 1,
+            Price: userdata.ProdPrice,
+          };
+          const insert = db
+            .collection("cart")
+            .doc(email)
+            .set(productdata)
+            .then(function () {});
+          insert.then(
+            () => {
+              Swal.fire(
+                "Congratulations!",
+                "Your product has been added to your cart succesfully..!",
+                "success"
+              ).then(() => {
+                location.reload();
+              });
+            },
+            (error) => {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+              });
+            }
+          );
+        }
+        console.log(userdata.ProdPic);
+      });
+    })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
 }
