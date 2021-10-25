@@ -30,7 +30,7 @@ function insert() {
       email + "/products/" + name + "/productimg3"
     );
      upload3.put(file3);
-    const task = storage
+    storage
       .ref(email + "/products/" + name + "/productimg1")
       .getDownloadURL()
       .then((url) => {
@@ -41,30 +41,30 @@ function insert() {
           Category: category,
           ProdDesc: desc,
           ProdPic: url,
+          SellerEmail: email,
         };
-        db
+        const task = db
           .collection("products")
-          .doc("All Products")
-          .collection(email)
           .doc(name)
           .set(prod_data)
           .then(function () {
             console.log("Added to the database");
           });
+        task.then(
+          Swal.fire(
+            "Status",
+            "Product added to your profile succesfully..!",
+            "success"
+          ),
+          (error) => {
+            console.log("error", error);
+          }
+        );
         
       });
     
     
-    task.then(
-      Swal.fire(
-        "Status",
-        "Product added to your profile succesfully..!",
-        "success"
-      ),
-      (error) => {
-        console.log("error", error);
-      }
-    );
+    
 
     //   console.log("Inside function");
     //   var name = document.getElementById("name").value;

@@ -8,9 +8,15 @@ function indexpr() {
     var desc1 = document.getElementById("desc1");
     var price1 = document.getElementById("price1");
     
+    var img1 = document.getElementById("img2");
+    var title1 = document.getElementById("title2");
+    var desc1 = document.getElementById("desc2");
+    var price1 = document.getElementById("price2");
     
-    
-    
+    var img1 = document.getElementById("img3");
+    var title1 = document.getElementById("title3");
+    var desc1 = document.getElementById("desc3");
+    var price1 = document.getElementById("price3");
     
     var listRef = firebase.storage().ref();
     var urlarray = [];
@@ -42,26 +48,27 @@ function indexpr() {
         // Uh-oh, an error occurred!
       });
   
-  db.collection("products")
-    .doc("All Products")
-    .collection("d2019omkar.pawar@ves.ac.in")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        const userdata = doc.data();
-        img1.setAttribute(
-          "src",
-          userdata.ProdPic
-        );
-        title1.innerHTML = userdata.ProdName;
-        desc1.innerHTML = userdata.ProdDesc;
-        price1.innerHTML = "₹ " + userdata.ProdPrice + " /-";
-      });
-    })
-    .catch((error) => {
-      console.log("Error getting documents: ", error);
-    });
+  // Working Code Down here
+  
+  // db.collection("products")
+  //   .get()
+  //   .then((querySnapshot) => {
+  //     querySnapshot.forEach((doc) => {
+  //       // doc.data() is never undefined for query doc snapshots
+  //       const userdata = doc.data();
+  //       img1.setAttribute(
+  //         "src",
+  //         userdata.ProdPic
+  //       );
+  //       title1.innerHTML = userdata.ProdName;
+  //       desc1.innerHTML = userdata.ProdDesc;
+  //       price1.innerHTML = "₹ " + userdata.ProdPrice + " /-";
+  //       console.log(userdata);
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     console.log("Error getting documents: ", error);
+  //   });
         
         // .then((url) => {
         // console.log("url", url);
