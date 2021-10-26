@@ -45,7 +45,7 @@ function createCard(img1, title, desc, price) {
   carddiv.setAttribute("class", "card mb-4");
   img.setAttribute("class", "card-img-top");
   img.setAttribute("src", img1);
-  img.setAttribute("style", "    height: 400px;");
+  img.setAttribute("style", "    height: 500px;");
   cardbody.setAttribute("class", "card-body");
   h5.setAttribute("class", "card-title");
   h5.setAttribute(
