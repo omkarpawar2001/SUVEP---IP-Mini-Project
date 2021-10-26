@@ -1,6 +1,6 @@
 import { getCookieLogin } from "./cookiestore.js";
 import { db, storage } from "./firebase_config.js";
-var i = 0;
+
 var array = [];
 var emails = [];
 var prices = [];
@@ -15,7 +15,7 @@ function deleteProduct() {
 var email = getCookieLogin("email");
 
 
-
+var i = 0;
 db.collection("cart")
   .doc("All Products")
   .collection("email")
@@ -41,6 +41,9 @@ db.collection("cart")
 
       var price = userdata.Price;
 
+      // prices.push(userdata.ProdPrice);
+      // console.log(prices)
+
       emails.push(userdata.ProdName);
       console.log(emails);
       prices.push(price);
@@ -57,7 +60,7 @@ db.collection("cart")
           .collection("cart")
           .doc("All Products")
           .collection("email")
-          .doc(emails[i-1])
+          .doc(emails[index-1])
           .delete()
           .then(() => {});
         remove.then(() => {
@@ -78,6 +81,22 @@ db.collection("cart")
 
       // col2
       btnminus.setAttribute("class", "btn-outline-secondary plus-minus");
+      btnminus.setAttribute("name", i);
+      // btnminus.onclick = function () {
+      //   console.log(this.getAttribute("name"));
+      //   var quan = document.getElementById('quan' + i);
+      //   if (parseInt(quan.innerHTML) > 0) {
+      //     quan.innerHTML = parseInt(quan.innerHTML) - 1;
+      //     var price1 = document.getElementById("price" + i);
+          
+      //     price1.innerHTML = price * parseInt(quan.innerHTML);
+      //     prices[i - 1] = price1.innerHTML * parseInt(quan.innerHTML);
+      //     console.log(prices);
+      //   }
+      //   else {
+      //     alert("Minimum Count Reached!!");
+      //   }
+      // }
       btnminus.setAttribute(
         "onclick",
         "console.log(" +
@@ -110,6 +129,20 @@ db.collection("cart")
       btnplus.setAttribute("id", "plus" + i);
       const p = btnplus.getAttribute("id");
       console.log(p);
+      // btnplus.onclick = function () {
+      //   console.log(this.getAttribute("name"));
+      //   var quan = document.getElementById("quan" + i);
+      //   if (parseInt(quan.innerHTML) > 0) {
+      //     quan.innerHTML = parseInt(quan.innerHTML) + 1;
+      //     var price1 = document.getElementById("price" + i);
+
+      //     price1.innerHTML = price * parseInt(quan.innerHTML);
+      //     prices[i - 1] = price1.innerHTML;
+      //     console.log(prices);
+      //   } else {
+      //     alert("Minimum Count Reached!!");
+      //   }
+      // };
       btnplus.setAttribute(
         "onclick",
         "console.log(" +
@@ -128,11 +161,22 @@ db.collection("cart")
           price.innerHTML = " +
           price +
           "*(parseInt(quan.innerHTML));\
+        for (var j = 0; j <= i - 1; j++) {\
+          var quantity = document.getElementById('quan'+i).innerHTML;\
+          console.log('quantity' + quantity);\
+          console.log(prices);\
+          console.log(prices[j]);\
+          carttotal += parseInt(prices[j]) * parseInt(quantity);\
+          console.log('Carttotal: ', carttotal);\
+        }\
         }\
         else{ alert('Maximum Count Reached!!')}\
         \
         "
+        
+        // prices[i - 1] = parseInt(document.getElementById('quan'+ i).innerHTML)
       );
+      
 
       btnminus.innerHTML = "-";
       btnminus.setAttribute("id", "minus" + i);
@@ -170,7 +214,7 @@ db.collection("cart")
       counttag.innerHTML = 1;
 
       // col3.innerHTML = "&#8377; ";
-      pricetag.innerHTML = "₹ "+price;
+      pricetag.innerHTML = price;
 
       col3.innerHTML += " /-";
       col3.appendChild(btnclose);
@@ -180,13 +224,22 @@ db.collection("cart")
       document.getElementById("totalitems").innerHTML = array.length + " items";
       document.getElementById("totalcartitems").innerHTML =
         array.length + " items";
-      var carttotal=0;
-      for (var i = 0; i < prices.length; i++) {
-        console.log(prices[i]);
-        carttotal += parseInt(prices[i]);
-      }
-      console.log(carttotal);
-      document.getElementById("carttotalfinal").innerHTML = "₹ "+ carttotal+" /-";
+      var carttotal = 0;
+        for (var j = 0; j <= i - 1; j++) {
+          
+          var quantity = document.getElementById("quan"+i).innerHTML;
+          console.log("quantity" + quantity);
+          // quan.push(quantity);
+          console.log(prices);
+          console.log(prices[j]);
+          carttotal += parseInt(prices[j]) * parseInt(quantity);
+          console.log("Carttotal: ", carttotal);
+        }
+        console.log(carttotal);
+        document.getElementById("carttotalfinal").innerHTML =
+          "₹ " + carttotal + " /-";
+      
+      
 
       // for (var j = 1; j < array.length; j++) {
       //   // while (parseInt(document.getElementById("quan" + j).innerHTML) > 0) {
