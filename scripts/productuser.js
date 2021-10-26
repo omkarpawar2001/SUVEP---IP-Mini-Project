@@ -1,10 +1,19 @@
 import { getCookieLogin } from "./cookiestore.js";
-import { db } from "./firebase_config.js";
+import { db, storage } from "./firebase_config.js";
 
 window.onload = allproducts;
 
 
 function allproducts() {
+  document.getElementById("data").innerHTML = getCookieLogin("username");
+  const email = getCookieLogin("email");
+  storage
+    .ref(email + "/profileimg")
+    .getDownloadURL()
+    .then((url) => {
+      console.log("url", url);
+      document.getElementById("picsm").setAttribute("src", url);
+    });
   db.collection("products")
     .get()
     .then((querySnapshot) => {

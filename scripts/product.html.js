@@ -1,19 +1,9 @@
 import { getCookieLogin } from "./cookiestore.js";
 import { db, storage } from "./firebase_config.js";
 window.onload = productpg;
-var btn = document.getElementById("addtocart");
-btn.onclick = addToCart;  
 
 function productpg() {
-  document.getElementById("data").innerHTML = getCookieLogin("username");
-  const email = getCookieLogin("email");
-  storage
-    .ref(email + "/profileimg")
-    .getDownloadURL()
-    .then((url) => {
-      console.log("url", url);
-      document.getElementById("picsm").setAttribute("src", url);
-    });
+
   //     var params=[];
   //   console.log("inside function");
   //   var parser = document.createElement("a");
@@ -47,44 +37,40 @@ function productpg() {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
-            const userdata = doc.data();
-            if (userdata.ProdName == pair[1]) {
-                title.innerHTML = userdata.ProdName;
-                price.innerHTML = "₹ " + userdata.ProdPrice + " /-";
-                desc.innerHTML = userdata.ProdDesc;
-                console.log(pair[1])
-              storage
-                .ref(userdata.SellerEmail + "/products/"+pair[1]+"/productimg1")
-                .getDownloadURL()
-                .then((url) => {
-                  console.log("url", url);
-                    mainimg.setAttribute("src", url);
-                    img1.setAttribute("src", url);
-                });
-                storage
-                  .ref(
-                    userdata.SellerEmail +
-                      "/products/" +
-                      pair[1] +
-                      "/productimg2"
-                  )
-                  .getDownloadURL()
-                  .then((url) => {
-                    console.log("url", url);
-                    img2.setAttribute("src", url);
-                  });
-                storage
-                  .ref(
-                    userdata.SellerEmail +
-                      "/products/" +
-                      pair[1] +
-                      "/productimg3"
-                  )
-                  .getDownloadURL()
-                  .then((url) => {
-                    console.log("url", url);
-                    img3.setAttribute("src", url);
-                  });
+          const userdata = doc.data();
+          if (userdata.ProdName == pair[1]) {
+            title.innerHTML = userdata.ProdName;
+            price.innerHTML = "₹ " + userdata.ProdPrice + " /-";
+            desc.innerHTML = userdata.ProdDesc;
+            console.log(pair[1]);
+            storage
+              .ref(
+                userdata.SellerEmail + "/products/" + pair[1] + "/productimg1"
+              )
+              .getDownloadURL()
+              .then((url) => {
+                console.log("url", url);
+                mainimg.setAttribute("src", url);
+                img1.setAttribute("src", url);
+              });
+            storage
+              .ref(
+                userdata.SellerEmail + "/products/" + pair[1] + "/productimg2"
+              )
+              .getDownloadURL()
+              .then((url) => {
+                console.log("url", url);
+                img2.setAttribute("src", url);
+              });
+            storage
+              .ref(
+                userdata.SellerEmail + "/products/" + pair[1] + "/productimg3"
+              )
+              .getDownloadURL()
+              .then((url) => {
+                console.log("url", url);
+                img3.setAttribute("src", url);
+              });
           }
         });
       })

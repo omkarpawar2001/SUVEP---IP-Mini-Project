@@ -54,7 +54,7 @@ function display() {
               // console.log(user, mobile, address);
               setCookieLogin(email, user, mobile, address, type);
               console.log(document.cookie);
-              var url = "/dash.html?name=" + user;
+              var url = "/userhome.html?name=" + user;
               document.location.href = url;
             }
           })
