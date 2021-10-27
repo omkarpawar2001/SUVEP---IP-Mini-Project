@@ -1,10 +1,19 @@
 import { getCookieLogin } from "./cookiestore.js";
-import { db } from "./firebase_config.js";
+import { db,storage } from "./firebase_config.js";
 
 window.onload = allproducts;
 
 var email = getCookieLogin("email");
 function allproducts() {
+  document.getElementById("data").innerHTML = getCookieLogin("username");
+  const email = getCookieLogin("email");
+  storage
+    .ref(email + "/profileimg")
+    .getDownloadURL()
+    .then((url) => {
+      console.log("url", url);
+      document.getElementById("picsm").setAttribute("src", url);
+    });
   db.collection("products")
     .get()
     .then((querySnapshot) => {
@@ -12,6 +21,8 @@ function allproducts() {
         const userdata = doc.data();
         console.log(userdata.ProdPic);
         if (userdata.SellerEmail == email) {
+          console.log(userdata.SellerEmail);
+          console.log(email);
           createCard(
             userdata.ProdPic,
             userdata.ProdName,
