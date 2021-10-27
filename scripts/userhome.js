@@ -1,4 +1,4 @@
-import { storage } from "./firebase_config.js";
+import { db, storage } from "./firebase_config.js";
 import { getCookieLogin } from "./cookiestore.js";
 
 window.onload = dashpic;
@@ -13,4 +13,29 @@ function dashpic() {
       console.log("url", url);
       document.getElementById("picsm").setAttribute("src", url);
     });
+  db.collection("users")
+    .doc(email)
+    .get()
+    .then((querySnapshot) => {
+      let data = querySnapshot.data();
+      if (data.Type != "Seller") {
+        var mypro = document.getElementById("myproducts");
+        mypro.parentNode.removeChild(mypro);
+      }
+    })
+    .catch((err) => {
+      console.log(`Error: ${err}`);
+    });
 }
+
+{/* <script>
+            var up = document.getElementById('GFG_UP');
+            var down = document.getElementById('GFG_DOWN');
+            var div = document.getElementById('GFG_DIV');
+            up.innerHTML = "Click on button to remove the element.";
+              
+            function GFG_Fun() {
+                div.parentNode.removeChild(div);
+                down.innerHTML = "Element is removed."; 
+            }
+        </script>  */}

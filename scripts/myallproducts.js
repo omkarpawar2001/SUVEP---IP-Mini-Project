@@ -4,6 +4,7 @@ import { db,storage } from "./firebase_config.js";
 window.onload = allproducts;
 
 var email = getCookieLogin("email");
+var count = 0;
 function allproducts() {
   document.getElementById("data").innerHTML = getCookieLogin("username");
   const email = getCookieLogin("email");
@@ -21,6 +22,7 @@ function allproducts() {
         const userdata = doc.data();
         console.log(userdata.ProdPic);
         if (userdata.SellerEmail == email) {
+          count++;
           console.log(userdata.SellerEmail);
           console.log(email);
           createCard(
@@ -31,6 +33,12 @@ function allproducts() {
           );
         }
       });
+      console.log(count)
+      if (count == 0) {
+        
+        var noproduct = document.getElementById("noproduct");
+        noproduct.innerHTML = "No products to display. Please upload a product first."
+      }
     })
     .catch((error) => {
       console.log("Error getting documents: ", error);
