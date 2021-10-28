@@ -14,7 +14,6 @@ function deleteProduct() {
 }
 var email = getCookieLogin("email");
 
-
 var i = 0;
 db.collection("cart")
   .doc("All Products")
@@ -60,7 +59,7 @@ db.collection("cart")
           .collection("cart")
           .doc("All Products")
           .collection("email")
-          .doc(emails[index-1])
+          .doc(emails[index - 1])
           .delete()
           .then(() => {});
         remove.then(() => {
@@ -88,7 +87,7 @@ db.collection("cart")
       //   if (parseInt(quan.innerHTML) > 0) {
       //     quan.innerHTML = parseInt(quan.innerHTML) - 1;
       //     var price1 = document.getElementById("price" + i);
-          
+
       //     price1.innerHTML = price * parseInt(quan.innerHTML);
       //     prices[i - 1] = price1.innerHTML * parseInt(quan.innerHTML);
       //     console.log(prices);
@@ -97,29 +96,59 @@ db.collection("cart")
       //     alert("Minimum Count Reached!!");
       //   }
       // }
-      btnminus.setAttribute(
-        "onclick",
-        "console.log(" +
-          i +
-          ");    \
-        \
-        var quan = document.getElementById('quan" +
-          i +
-          "');\
-        if(parseInt(quan.innerHTML)>1)\
-        {\
-          quan.innerHTML = parseInt(quan.innerHTML)-1;\
-          var price = document.getElementById('price" +
-          i +
-          "');\
-          price.innerHTML =" +
-          price +
-          "*(parseInt(quan.innerHTML));\
-        }\
-        else{ alert('Minimum Count Reached!!')}\
-        \
-        "
-      );
+      // btnminus.setAttribute(
+      //   "onclick",
+      //   "console.log(" +
+      //     i +
+      //     ");    \
+      //   \
+      //   var quan = document.getElementById('quan" +
+      //     i +
+      //     "');\
+      //   if(parseInt(quan.innerHTML)>1)\
+      //   {\
+      //     quan.innerHTML = parseInt(quan.innerHTML)-1;\
+      //     var price = document.getElementById('price" +
+      //     i +
+      //     "');\
+      //     price.innerHTML =" +
+      //     price +
+      //     "*(parseInt(quan.innerHTML));\
+      //   }\
+      //   else{ alert('Minimum Count Reached!!')}\
+      //   \
+      //   "
+      // );
+      btnminus.onclick = function () {
+        carttotal = 0;
+        console.log("Value of i" + btnminus.getAttribute("name"));
+        var nm = btnminus.getAttribute("name");
+        var quan = document.getElementById("quan".concat(nm));
+        if (parseInt(quan.innerHTML) >= 2) {
+          quan.innerHTML = parseInt(quan.innerHTML) - 1;
+          var col3 = document.getElementById("col3");
+          var price1 = document.getElementById("price".concat(nm));
+          console.log("price:" + price1.innerHTML);
+          price1.innerHTML = price1.innerHTML - prices[parseInt(nm) - 1];
+            // prices[parseInt(nm) - 1] / parseInt(quan.innerHTML)-1;
+          console.log("nm+1 "+(parseInt(nm)+1))
+          for (var x = (parseInt(nm)); x >= 0; x--) {
+            console.log("nm:" + x);
+            var quan2 = document.getElementById("quan".concat(parseInt(nm) + 1)).innerHTML;
+            console.log("quantity for each iteraion" + quan2);
+            console.log(prices);
+            console.log("X" + x);
+            console.log(prices[x] + " * " + parseInt(quan2));
+            console.log(carttotal + "+=" + prices[x] + "*" + parseInt(quan2));
+            carttotal += prices[x] * parseInt(quan2);
+            console.log("Carttotal: ", carttotal);
+            document.getElementById("carttotalfinal").innerHTML =
+              "₹ " + carttotal + " /-";
+          }
+        } else {
+          alert("Maximum Count Reached!!");
+        }
+      };
       counttag.setAttribute("class", "border");
       counttag.setAttribute("id", "quan" + i);
 
@@ -127,56 +156,40 @@ db.collection("cart")
       btnplus.setAttribute("class", "btn-outline-success plus-minus");
       btnplus.innerHTML = "+";
       btnplus.setAttribute("id", "plus" + i);
+      btnplus.setAttribute("name", i);
       const p = btnplus.getAttribute("id");
       console.log(p);
-      // btnplus.onclick = function () {
-      //   console.log(this.getAttribute("name"));
-      //   var quan = document.getElementById("quan" + i);
-      //   if (parseInt(quan.innerHTML) > 0) {
-      //     quan.innerHTML = parseInt(quan.innerHTML) + 1;
-      //     var price1 = document.getElementById("price" + i);
 
-      //     price1.innerHTML = price * parseInt(quan.innerHTML);
-      //     prices[i - 1] = price1.innerHTML;
-      //     console.log(prices);
-      //   } else {
-      //     alert("Minimum Count Reached!!");
-      //   }
-      // };
-      btnplus.setAttribute(
-        "onclick",
-        "console.log(" +
-          i +
-          ");    \
-        var quan = document.getElementById('quan" +
-          i +
-          "');\
-        if(parseInt(quan.innerHTML)<=4)\
-        {\
-          quan.innerHTML = parseInt(quan.innerHTML)+1;\
-          var col3 = document.getElementById('col3');\
-          var price = document.getElementById('price" +
-          i +
-          "');\
-          price.innerHTML = " +
-          price +
-          "*(parseInt(quan.innerHTML));\
-        for (var j = 0; j <= i - 1; j++) {\
-          var quantity = document.getElementById('quan'+i).innerHTML;\
-          console.log('quantity' + quantity);\
-          console.log(prices);\
-          console.log(prices[j]);\
-          carttotal += parseInt(prices[j]) * parseInt(quantity);\
-          console.log('Carttotal: ', carttotal);\
-        }\
-        }\
-        else{ alert('Maximum Count Reached!!')}\
-        \
-        "
-        
-        // prices[i - 1] = parseInt(document.getElementById('quan'+ i).innerHTML)
-      );
-      
+      btnplus.onclick = function () {
+        carttotal = 0;
+        console.log("Value of i" + btnplus.getAttribute('name'));
+        var nm = btnplus.getAttribute("name");
+        var quan = document.getElementById('quan'.concat(nm));
+        if (parseInt(quan.innerHTML) <= 4) {
+          quan.innerHTML = parseInt(quan.innerHTML) + 1;
+          var col3 = document.getElementById("col3");
+          var price1 = document.getElementById("price".concat(nm));
+          console.log("price:"+price1.innerHTML)
+          price1.innerHTML = prices[parseInt(nm)-1] * parseInt(quan.innerHTML);
+          for (var x = 0; x < (parseInt(nm)+1); x++) {
+            console.log("nm:"+nm+1)
+            var quan1 = document.getElementById("quan".concat(x+1)).innerHTML;
+            // var price2 = document.getElementById("price".concat(x+1));
+            // console.log("quantity for each iteraion" + quan1);
+            // console.log(prices);
+            // // console.log(prices[x]);
+            // console.log("X"+x)
+            // console.log(prices[x] + " * " + parseInt(quan1));
+            // console.log(carttotal+"+="+prices[x]+"*"+parseInt(quan1))
+            carttotal += prices[x] * parseInt(quan1)
+            // console.log("Carttotal: ", carttotal);
+            document.getElementById("carttotalfinal").innerHTML =
+              "₹ " + carttotal + " /-";
+          }
+        } else {
+          alert("Maximum Count Reached!!");
+        }
+      };
 
       btnminus.innerHTML = "-";
       btnminus.setAttribute("id", "minus" + i);
@@ -225,21 +238,18 @@ db.collection("cart")
       document.getElementById("totalcartitems").innerHTML =
         array.length + " items";
       var carttotal = 0;
-        for (var j = 0; j <= i - 1; j++) {
-          
-          var quantity = document.getElementById("quan"+i).innerHTML;
-          console.log("quantity" + quantity);
-          // quan.push(quantity);
-          console.log(prices);
-          console.log(prices[j]);
-          carttotal += parseInt(prices[j]) * parseInt(quantity);
-          console.log("Carttotal: ", carttotal);
-        }
-        console.log(carttotal);
-        document.getElementById("carttotalfinal").innerHTML =
-          "₹ " + carttotal + " /-";
-      
-      
+      for (var j = 0; j <= i - 1; j++) {
+        var quantity = document.getElementById("quan" + i).innerHTML;
+        console.log("quantity" + quantity);
+        // quan.push(quantity);
+        console.log(prices);
+        console.log(prices[j]);
+        carttotal += parseInt(prices[j]) * parseInt(quantity);
+        console.log("Carttotal: ", carttotal);
+      }
+      console.log(carttotal);
+      document.getElementById("carttotalfinal").innerHTML =
+        "₹ " + carttotal + " /-";
 
       // for (var j = 1; j < array.length; j++) {
       //   // while (parseInt(document.getElementById("quan" + j).innerHTML) > 0) {
@@ -260,6 +270,5 @@ db.collection("cart")
     console.log("Error getting documents: ", error);
   });
 
-    // console.log(emails);
-    // console.log($("#table td").closest("tr").length);
-  
+// console.log(emails);
+// console.log($("#table td").closest("tr").length);
