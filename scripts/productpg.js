@@ -114,8 +114,8 @@ function addToCart() {
           };
           const insert = db
             .collection("cart")
-            .doc("All Products")
-            .collection("email")
+            .doc(email)
+            .collection(email)
             .doc(prodname)
             .set(productdata)
             .then(function () {});
