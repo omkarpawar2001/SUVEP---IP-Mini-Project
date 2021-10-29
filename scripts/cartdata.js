@@ -44,7 +44,6 @@ db.collection("cart")
       // console.log(prices)
 
       emails.push(userdata.ProdName);
-      console.log(emails);
       prices.push(price);
       // col3
       btnclose.setAttribute("class", "close btn-danger");
@@ -81,21 +80,6 @@ db.collection("cart")
       // col2
       btnminus.setAttribute("class", "btn-outline-secondary plus-minus");
       btnminus.setAttribute("name", i);
-      // btnminus.onclick = function () {
-      //   console.log(this.getAttribute("name"));
-      //   var quan = document.getElementById('quan' + i);
-      //   if (parseInt(quan.innerHTML) > 0) {
-      //     quan.innerHTML = parseInt(quan.innerHTML) - 1;
-      //     var price1 = document.getElementById("price" + i);
-
-      //     price1.innerHTML = price * parseInt(quan.innerHTML);
-      //     prices[i - 1] = price1.innerHTML * parseInt(quan.innerHTML);
-      //     console.log(prices);
-      //   }
-      //   else {
-      //     alert("Minimum Count Reached!!");
-      //   }
-      // }
       // btnminus.setAttribute(
       //   "onclick",
       //   "console.log(" +
@@ -121,27 +105,33 @@ db.collection("cart")
       // );
       btnminus.onclick = function () {
         carttotal = 0;
-        console.log("Value of i" + btnminus.getAttribute("name"));
+        // console.log("Value of btnminus" + btnminus.getAttribute("name"));
         var nm = btnminus.getAttribute("name");
         var quan = document.getElementById("quan".concat(nm));
+        // console.log("quan.innerHTML " + quan.innerHTML);
         if (parseInt(quan.innerHTML) >= 2) {
           quan.innerHTML = parseInt(quan.innerHTML) - 1;
-          var col3 = document.getElementById("col3");
           var price1 = document.getElementById("price".concat(nm));
-          console.log("price:" + price1.innerHTML);
+          // console.log("price:" + price1.innerHTML);
           price1.innerHTML = price1.innerHTML - prices[parseInt(nm) - 1];
-            // prices[parseInt(nm) - 1] / parseInt(quan.innerHTML)-1;
-          console.log("nm+1 "+(parseInt(nm)+1))
-          for (var x = (parseInt(nm)); x >= 0; x--) {
-            console.log("nm:" + x);
-            var quan2 = document.getElementById("quan".concat(parseInt(nm) + 1)).innerHTML;
-            console.log("quantity for each iteraion" + quan2);
-            console.log(prices);
-            console.log("X" + x);
-            console.log(prices[x] + " * " + parseInt(quan2));
-            console.log(carttotal + "+=" + prices[x] + "*" + parseInt(quan2));
-            carttotal += prices[x] * parseInt(quan2);
-            console.log("Carttotal: ", carttotal);
+          // prices[parseInt(nm) - 1] / parseInt(quan.innerHTML)-1;
+          // console.log("nm+1 " + (parseInt(nm) + 1));
+          // for (var x = parseInt(nm); x >= 0; x--) {
+          //   console.log("nm:" + x);
+          //   console.log("quan".concat(nm))
+            
+
+            
+          // }
+          for (var y = 0; y <= i; y++){
+            var quan2 = document.getElementById("quan".concat(y+1)).innerHTML;
+            // console.log("quantity for each iteraion" + quan2);
+            // console.log(prices);
+            // console.log("X" + y);
+            // console.log(prices[y] + " * " + parseInt(quan2));
+            // console.log(carttotal + "+=" + prices[y] + "*" + parseInt(quan2));
+            carttotal += prices[y] * parseInt(quan2);
+            // console.log("Carttotal: ", carttotal);
             document.getElementById("carttotalfinal").innerHTML =
               "₹ " + carttotal + " /-";
           }
@@ -158,22 +148,28 @@ db.collection("cart")
       btnplus.setAttribute("id", "plus" + i);
       btnplus.setAttribute("name", i);
       const p = btnplus.getAttribute("id");
-      console.log(p);
+      // console.log(p);
 
       btnplus.onclick = function () {
         carttotal = 0;
-        console.log("Value of i" + btnplus.getAttribute('name'));
+        // console.log("Value of i" + btnplus.getAttribute("name"));
         var nm = btnplus.getAttribute("name");
-        var quan = document.getElementById('quan'.concat(nm));
+        var quan = document.getElementById("quan".concat(nm));
         if (parseInt(quan.innerHTML) <= 4) {
           quan.innerHTML = parseInt(quan.innerHTML) + 1;
           var col3 = document.getElementById("col3");
           var price1 = document.getElementById("price".concat(nm));
-          console.log("price:"+price1.innerHTML)
-          price1.innerHTML = prices[parseInt(nm)-1] * parseInt(quan.innerHTML);
-          for (var x = 0; x < (parseInt(nm)+1); x++) {
-            console.log("nm:"+nm+1)
-            var quan1 = document.getElementById("quan".concat(x+1)).innerHTML;
+          // console.log("price:" + price1.innerHTML);
+          price1.innerHTML =
+            prices[parseInt(nm) - 1] * parseInt(quan.innerHTML);
+          for (var x = 0; x <= i; x++) {
+            // console.log("nm:" + (parseInt(nm) + 1));
+            // console.log("X:" + x);
+            // console.log("X+1 = " + parseInt(x + 1));
+            // console.log("quan".concat(parseInt(x + 1)));
+            var quan1 = document.getElementById(
+              "quan".concat(parseInt(x + 1))
+            ).innerHTML;
             // var price2 = document.getElementById("price".concat(x+1));
             // console.log("quantity for each iteraion" + quan1);
             // console.log(prices);
@@ -181,7 +177,7 @@ db.collection("cart")
             // console.log("X"+x)
             // console.log(prices[x] + " * " + parseInt(quan1));
             // console.log(carttotal+"+="+prices[x]+"*"+parseInt(quan1))
-            carttotal += prices[x] * parseInt(quan1)
+            carttotal += prices[x] * parseInt(quan1);
             // console.log("Carttotal: ", carttotal);
             document.getElementById("carttotalfinal").innerHTML =
               "₹ " + carttotal + " /-";
@@ -240,14 +236,14 @@ db.collection("cart")
       var carttotal = 0;
       for (var j = 0; j <= i - 1; j++) {
         var quantity = document.getElementById("quan" + i).innerHTML;
-        console.log("quantity" + quantity);
+        // console.log("quantity" + quantity);
         // quan.push(quantity);
-        console.log(prices);
-        console.log(prices[j]);
+        // console.log(prices);
+        // console.log(prices[j]);
         carttotal += parseInt(prices[j]) * parseInt(quantity);
-        console.log("Carttotal: ", carttotal);
+        // console.log("Carttotal: ", carttotal);
       }
-      console.log(carttotal);
+      // console.log(carttotal);
       document.getElementById("carttotalfinal").innerHTML =
         "₹ " + carttotal + " /-";
 
