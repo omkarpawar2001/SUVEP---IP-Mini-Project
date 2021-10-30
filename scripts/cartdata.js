@@ -7,19 +7,15 @@ var prices = [];
 
 var clear = document.getElementById("clearall");
 clear.onclick = clearall;
+
+var clear = document.getElementById("checkout");
+clear.onclick = checkout;
+
 var email = getCookieLogin("email");
+var name = getCookieLogin("username");
+var mobile = getCookieLogin("mobile");
 function clearall() {
   console.log("Email: "+email)
-  // db.collection("cart")
-  //   .doc(email)
-  //   .delete()
-  //   .then(() => {
-  //     console.log("Document successfully deleted!");
-  //     window.location.href = "/cart.html";
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error removing document: ", error);
-  //   });
   for (var cl = 0; cl < emails.length; cl++){
     var remove = db
       .collection("cart")
@@ -40,6 +36,101 @@ function clearall() {
         
 }
 
+
+
+function checkout(e) {
+  var totalprice = parseInt(document.getElementById("carttotalfinal").value);
+  alert(totalprice);
+  var options = {
+    key: "rzp_test_h5iCkEZGWojMlW", // Enter the Key ID generated from the Dashboard Yash ID
+    // "key": "rzp_test_PpOinqLyVBHOcP", // Enter the Key ID generated from the Dashboard
+    amount: totalprice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 means 50000 paise or ₹500.
+    currency: "INR",
+    name: name,
+    description: "SUVEP - Order Payment",
+    image: "logo.png", // Replace this with the order_id created using Orders API (https://razorpay.com/docs/api/orders).
+    handler: function (response) {
+      alert("payment success");
+      console.log(response);
+      console.log(response.razorpay_payment_id);
+      console.log(totalprice);
+      console.log(name);
+      console.log(mobile);
+      console.log(email);
+      var currentdate = new Date();
+      var datetime =
+        currentdate.getDate() +
+        "/" +
+        (currentdate.getMonth() + 1) +
+        "/" +
+        currentdate.getFullYear() +
+        " " +
+        currentdate.getHours() +
+        ":" +
+        currentdate.getMinutes() +
+        ":" +
+        currentdate.getSeconds();
+      console.log(datetime);
+
+      const order_data = {
+        Name: name,
+        Email: email,
+        MobileNo: mobile,
+        Amount: totalprice,
+        PaymentID: response.razorpay_payment_id,
+      };
+      const insert = db
+        .collection("orders")
+        .doc(email)
+        .set(order_data)
+        .then(function () {
+          console.log("Added to the database");
+        });
+      insert.then(
+        () => {
+          Swal.fire(
+            "Congratulations!",
+            "Your order has been placed succesfully & will be delivered in 3-4 working days!",
+            "success"
+          ).then(() => {
+            clearall;
+          });
+        },
+        (error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+          });
+        }
+      );
+      $("#myModal").modal();
+      
+    },
+    prefill: {
+      name: name,
+      email: email,
+      contact: mobile,
+    },
+    theme: {
+      color: "#9932CC",
+    },
+  };
+  var rzp1 = new Razorpay(options);
+
+  rzp1.on("payment.failed", function (response) {
+    // alert(response.error.code);
+    // alert(response.error.description);
+    // alert(response.error.source);
+    // alert(response.error.step);
+    // alert(response.error.reason);
+    // alert(response.error.metadata.order_id);
+    // alert(response.error.metadata.payment_id);
+    alert("payment failed");
+  });
+  rzp1.open();
+  e.preventDefault();
+}
 
 
 
@@ -282,24 +373,8 @@ db.collection("cart")
         // console.log(carttotal);
         document.getElementById("carttotalfinal").innerHTML =
           "₹ " + carttotal + " /-";
-
-        // for (var j = 1; j < array.length; j++) {
-        //   // while (parseInt(document.getElementById("quan" + j).innerHTML) > 0) {
-        //     document.getElementById("plus" + j).onclick = () => {
-        //       document.getElementById("quan" + j).innerHTML =
-        //         parseInt(document.getElementById("quan" + j).innerHTML) + 1;
-        //     };
-        //     document.getElementById("minus" + j).onclick = () => {
-        //       document.getElementById("quan" + j).innerHTML =
-        //         parseInt(document.getElementById("quan" + j).innerHTML) - 1;
-        //     };
-        //   // }
-        // }
-
-        // col3
-
-        // console.log(emails);
-        // console.log($("#table td").closest("tr").length);
+        document.getElementById("carttotalfinal").value =
+          carttotal;
       } else {
         
       }
@@ -308,3 +383,5 @@ db.collection("cart")
   .catch((error) => {
     console.error("Error removing document: ", error);
   });
+
+  

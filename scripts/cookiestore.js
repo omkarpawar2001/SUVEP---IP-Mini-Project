@@ -7,6 +7,7 @@ function setCookieLogin(email, user, mobile, address, type) {
     document.cookie = "address = " + address;
     document.cookie = "type =" + type;
 }
+
 function getCookieLogin(name) {
   var nameEQ = name + "=";
   var ca = document.cookie.split(";");
