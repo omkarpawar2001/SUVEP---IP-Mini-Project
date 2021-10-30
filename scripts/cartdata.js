@@ -40,7 +40,7 @@ function clearall() {
 
 function checkout(e) {
   var totalprice = parseInt(document.getElementById("carttotalfinal").value);
-  alert(totalprice);
+  // alert(totalprice);
   var options = {
     key: "rzp_test_h5iCkEZGWojMlW", // Enter the Key ID generated from the Dashboard Yash ID
     // "key": "rzp_test_PpOinqLyVBHOcP", // Enter the Key ID generated from the Dashboard
@@ -48,9 +48,9 @@ function checkout(e) {
     currency: "INR",
     name: name,
     description: "SUVEP - Order Payment",
-    image: "logo.png", // Replace this with the order_id created using Orders API (https://razorpay.com/docs/api/orders).
+    image: "/img/logo.PNG", // Replace this with the order_id created using Orders API (https://razorpay.com/docs/api/orders).
     handler: function (response) {
-      alert("payment success");
+      // alert("payment success");
       console.log(response);
       console.log(response.razorpay_payment_id);
       console.log(totalprice);
@@ -81,7 +81,7 @@ function checkout(e) {
       };
       const insert = db
         .collection("orders")
-        .doc(email)
+        .doc(response.razorpay_payment_id)
         .set(order_data)
         .then(function () {
           console.log("Added to the database");
@@ -93,7 +93,7 @@ function checkout(e) {
             "Your order has been placed succesfully & will be delivered in 3-4 working days!",
             "success"
           ).then(() => {
-            clearall;
+            clearall();
           });
         },
         (error) => {
@@ -262,7 +262,7 @@ db.collection("cart")
                 "₹ " + carttotal + " /-";
             }
           } else {
-            alert("Maximum Count Reached!!");
+            alert("Minimum Count Reached!!");
           }
         };
         counttag.setAttribute("class", "border");
