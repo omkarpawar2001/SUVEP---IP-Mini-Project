@@ -4,7 +4,6 @@ import { db } from "./firebase_config.js";
 
 window.onload = dashpic;
 
-
 function dashpic() {
   // var url = document.location.href,
   //   params = url.split('?')[1].split('&'),
@@ -13,33 +12,46 @@ function dashpic() {
   //   tmp = params[i].split('=');
   //   data[tmp[0]] = tmp[1];
   // }
-    var usercount=0, ordercount=0, feedcount=0;
-    db.collection("users")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            usercount++;
-        });
-          document.getElementById("usercount").innerHTML = usercount-1;
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
+  var usercount = 0,
+    ordercount = 0,
+    feedcount = 0;
+  db.collection("users")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        usercount++;
       });
-    
-    db.collection("queries")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          feedcount++;
-        });
-        document.getElementById("feedcount").innerHTML = feedcount;
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
+      document.getElementById("usercount").innerHTML = usercount - 1;
+    })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
 
-    document.getElementById("data").innerHTML = getCookieLogin("username");
-    
+  db.collection("orders")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        ordercount++;
+      });
+      document.getElementById("ordercount").innerHTML = ordercount;
+    })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
+
+  db.collection("queries")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        feedcount++;
+      });
+      document.getElementById("feedcount").innerHTML = feedcount;
+    })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
+
+  document.getElementById("data").innerHTML = getCookieLogin("username");
 
   const email = getCookieLogin("email");
   storage

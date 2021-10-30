@@ -3,7 +3,7 @@ import { db } from "./firebase_config.js";
 import { userHead, orderHead, feedHead, getusers, getorders, getfeed } from './tableheaders.js';
 
 document.getElementById("users").onclick = usersData;
-// document.getElementById("orders").onclick = ordersData;
+document.getElementById("orders").onclick = orderData;
 document.getElementById("feedback").onclick = feedData;
 
 
@@ -40,6 +40,27 @@ function usersData() {
             console.log("Error getting documents: ", error);
         });
 
+}
+
+function orderData() {
+  // table;
+  clearTable();
+  orderHead();
+
+  var i = 1;
+  db.collection("orders")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        const userdata = doc.data();
+        getorders(i, userdata.Name, userdata.Email, userdata.MobileNo, userdata.Amount, userdata.PaymentID);
+        i++;
+      });
+    })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
 }
 
 function feedData() {

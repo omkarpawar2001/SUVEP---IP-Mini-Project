@@ -31,17 +31,26 @@ function userHead() {
 
 function orderHead() {
     title.innerHTML = "Orders's Data";
+    var th0 = document.createElement("th");
     var th1 = document.createElement("th");
     var th2 = document.createElement("th");
     var th3 = document.createElement("th");
+    var th4 = document.createElement("th");
+    var th5 = document.createElement("th");
 
+    th0.innerHTML = "Sr No";
     th1.innerHTML = "Name";
     th2.innerHTML = "Email ID";
-    th3.innerHTML = "Queries";
+    th3.innerHTML = "Mobile No";
+    th4.innerHTML = "Amount";
+    th5.innerHTML = "Payment ID";
 
+    thead.appendChild(th0);
     thead.appendChild(th1);
     thead.appendChild(th2);
     thead.appendChild(th3);
+    thead.appendChild(th4);
+    thead.appendChild(th5);
 }
 
 function feedHead() {
@@ -102,20 +111,24 @@ function getusers(sr,name, email, mobile, address, type) {
     tbody.appendChild(trow);
 }
 
-function getorders(sr,name, email, mobile, address, type) {
+function getorders(sr, name, email, mobile, amount, payment) {
+    
     var trow = document.createElement("tr");
+    var td0 = document.createElement("td");
     var td1 = document.createElement("td");
     var td2 = document.createElement("td");
     var td3 = document.createElement("td");
     var td4 = document.createElement("td");
     var td5 = document.createElement("td");
 
+    td0.innerHTML = sr;
     td1.innerHTML = name;
     td2.innerHTML = email;
     td3.innerHTML = mobile;
-    td4.innerHTML = address;
-    td5.innerHTML = type;
+    td4.innerHTML = amount;
+    td5.innerHTML = payment;
 
+    trow.appendChild(td0);
     trow.appendChild(td1);
     trow.appendChild(td2);
     trow.appendChild(td3);
