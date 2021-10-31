@@ -54,8 +54,9 @@ function orderData() {
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        const userdata = doc.data();
-        getorders(i, userdata.Name, userdata.Email, userdata.MobileNo, userdata.Amount, userdata.Products, userdata.PaymentID);
+          const userdata = doc.data();
+          console.log(userdata.TimeStamp)
+        getorders(i, userdata.Name, userdata.Email, userdata.MobileNo, userdata.Amount, userdata.Products, userdata.PaymentID, userdata.TimeStamp);
         i++;
       });
     })
