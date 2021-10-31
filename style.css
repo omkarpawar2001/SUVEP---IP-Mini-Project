@@ -195,8 +195,8 @@ height: 150px;
     width: 90px;
 }
 .linkbtn:hover{
-    background: #A40E4C;
-    color: #D7FCD4;
+    background: teal;
+    color: white;
 }
 .container{
     margin: 0;
@@ -396,4 +396,7 @@ a{
 
 .product-imgs{
     width: 100% !important;
+}
+.cart-btn:hover{
+    color: #FFF !important;
 }

@@ -170,9 +170,10 @@ db.collection("cart")
       if (email.length != 0) {
         var nodata = document.getElementById("nodata");
         nodata.innerHTML = "";
-        btnclose.setAttribute("class", "close btn-danger");
+        btnclose.setAttribute("class", "close btn-outline-danger");
         btnclose.setAttribute("id", "close" + i);
         btnclose.setAttribute("name", i);
+        btnclose.setAttribute("style", "border-radius: 20px;");
         btnclose.innerHTML = "&#10005;";
 
         btnclose.onclick = function () {
@@ -206,6 +207,7 @@ db.collection("cart")
         // col2
         btnminus.setAttribute("class", "btn-outline-secondary plus-minus");
         btnminus.setAttribute("name", i);
+        btnminus.setAttribute("style", "border-radius: 20px;");
         // btnminus.setAttribute(
         //   "onclick",
         //   "console.log(" +
@@ -273,6 +275,7 @@ db.collection("cart")
         btnplus.innerHTML = "+";
         btnplus.setAttribute("id", "plus" + i);
         btnplus.setAttribute("name", i);
+        btnplus.setAttribute("style", "border-radius: 20px;");
         const p = btnplus.getAttribute("id");
         // console.log(p);
 
