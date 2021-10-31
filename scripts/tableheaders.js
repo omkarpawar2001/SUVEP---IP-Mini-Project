@@ -38,6 +38,7 @@ function orderHead() {
     var th4 = document.createElement("th");
     var th5 = document.createElement("th");
     var th6 = document.createElement("th");
+    var th7 = document.createElement("th");
 
     th0.innerHTML = "Sr No";
     th1.innerHTML = "Name";
@@ -46,6 +47,7 @@ function orderHead() {
     th4.innerHTML = "Amount";
     th5.innerHTML = "Products";
     th6.innerHTML = "Payment ID";
+    th7.innerHTML = "TimeStamp";
 
     thead.appendChild(th0);
     thead.appendChild(th1);
@@ -54,6 +56,7 @@ function orderHead() {
     thead.appendChild(th4);
     thead.appendChild(th5);
     thead.appendChild(th6);
+    thead.appendChild(th7);
 }
 
 function feedHead() {
@@ -114,7 +117,7 @@ function getusers(sr,name, email, mobile, address, type) {
     tbody.appendChild(trow);
 }
 
-function getorders(sr, name, email, mobile, amount, products, payment) {
+function getorders(sr, name, email, mobile, amount, products, payment, timestamp) {
     
     var trow = document.createElement("tr");
     var td0 = document.createElement("td");
@@ -124,6 +127,7 @@ function getorders(sr, name, email, mobile, amount, products, payment) {
     var td4 = document.createElement("td");
     var td5 = document.createElement("td");
     var td6 = document.createElement("td");
+    var td7 = document.createElement("td");
 
     td0.innerHTML = sr;
     td1.innerHTML = name;
@@ -132,6 +136,7 @@ function getorders(sr, name, email, mobile, amount, products, payment) {
     td4.innerHTML = amount;
     td5.innerHTML = products;
     td6.innerHTML = payment;
+    td7.innerHTML = timestamp;
 
     trow.appendChild(td0);
     trow.appendChild(td1);
@@ -140,6 +145,7 @@ function getorders(sr, name, email, mobile, amount, products, payment) {
     trow.appendChild(td4);
     trow.appendChild(td5);
     trow.appendChild(td6);
+    trow.appendChild(td7);
 
     tbody.appendChild(trow);
 }

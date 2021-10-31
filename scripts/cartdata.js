@@ -81,6 +81,7 @@ function checkout(e) {
         Amount: totalprice,
         Products: emails,
         PaymentID: response.razorpay_payment_id,
+        TimeStamp: datetime,
       };
       const insert = db
         .collection("orders")
