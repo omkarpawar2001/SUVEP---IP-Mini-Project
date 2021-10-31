@@ -57,6 +57,7 @@ function checkout(e) {
       console.log(name);
       console.log(mobile);
       console.log(email);
+      console.log(emails);
       var currentdate = new Date();
       var datetime =
         currentdate.getDate() +
@@ -72,11 +73,13 @@ function checkout(e) {
         currentdate.getSeconds();
       console.log(datetime);
 
+
       const order_data = {
         Name: name,
         Email: email,
         MobileNo: mobile,
         Amount: totalprice,
+        Products: emails,
         PaymentID: response.razorpay_payment_id,
       };
       const insert = db

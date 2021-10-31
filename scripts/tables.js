@@ -2,8 +2,9 @@
 import { db } from "./firebase_config.js";
 import { userHead, orderHead, feedHead, getusers, getorders, getfeed } from './tableheaders.js';
 
-document.getElementById("users").onclick = usersData;
 document.getElementById("orders").onclick = orderData;
+document.getElementById("users").onclick = usersData;
+
 document.getElementById("feedback").onclick = feedData;
 
 
@@ -54,7 +55,7 @@ function orderData() {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         const userdata = doc.data();
-        getorders(i, userdata.Name, userdata.Email, userdata.MobileNo, userdata.Amount, userdata.PaymentID);
+        getorders(i, userdata.Name, userdata.Email, userdata.MobileNo, userdata.Amount, userdata.Products, userdata.PaymentID);
         i++;
       });
     })
