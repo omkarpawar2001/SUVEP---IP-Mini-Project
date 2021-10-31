@@ -21,6 +21,8 @@ function dashpic() {
       if (data.Type != "Seller") {
         var mypro = document.getElementById("myproducts");
         mypro.parentNode.removeChild(mypro);
+        var mydash = document.getElementById("mydashboard");
+        mydash.parentNode.removeChild(mydash);
       }
     })
     .catch((err) => {
