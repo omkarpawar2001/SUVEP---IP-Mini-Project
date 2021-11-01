@@ -177,7 +177,7 @@ db.collection("cart")
         btnclose.setAttribute("class", "close btn-outline-danger");
         btnclose.setAttribute("id", "close" + i);
         btnclose.setAttribute("name", i);
-        btnclose.setAttribute("style", "border-radius: 20px;");
+        btnclose.setAttribute("style", "border-radius: 20px; margin-left: 5px;");
         btnclose.innerHTML = "&#10005;";
 
         btnclose.onclick = function () {
@@ -265,7 +265,7 @@ db.collection("cart")
               carttotal += prices[y] * parseInt(quan2);
               // console.log("Carttotal: ", carttotal);
               document.getElementById("carttotalfinal").innerHTML =
-                "₹ " + carttotal + " /-";
+                "₹ " + carttotal + "/-";
             }
           } else {
             alert("Minimum Count Reached!!");
@@ -313,7 +313,7 @@ db.collection("cart")
               carttotal += prices[x] * parseInt(quan1);
               // console.log("Carttotal: ", carttotal);
               document.getElementById("carttotalfinal").innerHTML =
-                "₹ " + carttotal + " /-";
+                "₹ " + carttotal + "/-";
             }
           } else {
             alert("Maximum Count Reached!!");
@@ -330,6 +330,7 @@ db.collection("cart")
         // col1
         col1.setAttribute("class", "col");
         divtitle.setAttribute("class", "row");
+        divtitle.setAttribute("style","padding: 0 0 0 15px;")
         //Edit this for product title
         col1.appendChild(divtitle);
         // divcol2
@@ -358,7 +359,7 @@ db.collection("cart")
         // col3.innerHTML = "&#8377; ";
         pricetag.innerHTML = price;
 
-        col3.innerHTML += " /-";
+        col3.innerHTML += "/-";
         col3.appendChild(btnclose);
 
         imgtag.setAttribute("src", userdata.ProdPic); //Edit this for product picture
