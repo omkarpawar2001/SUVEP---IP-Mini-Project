@@ -116,10 +116,16 @@ li{
 }
 .btn-design{
     /* background-image:  linear-gradient(to right, teal 0%, rgb(80, 223, 80) 51%, teal 100% ); */
-    background-image:  linear-gradient(to right, #000428 0%, #2374bb  51%, #000428  100%);
+    background-image:  linear-gradient(to right, #00c6ff 0%, #0072ff  51%,  #00c6ff 100%);
     /* background-image: linear-gradient(to right, #43C6AC 0%, #191654  51%, #43C6AC  100%); */
 
-    align-self: center;
+    /* background: #1FA2FF;  /* fallback for old browsers */
+/* background: -webkit-linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);  /* Chrome 10-25, Safari 5.1-6 */
+/* background: linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);  */
+
+
+
+    /* align-self: center; */
 }
 .btn-design{
     margin: 0;
@@ -131,8 +137,7 @@ li{
     border-radius: 10px;
     transition: 0.5s;
     background-size: 200% auto;
-    color: whitesmoke;
-    font-weight: bold;
+    color: #FFF;
 }
 .btn-design:hover{
     background-position: right center;
@@ -194,9 +199,26 @@ height: 150px;
 .linkbtn-about{
     width: 90px;
 }
+.linkbtn{
+    
+    border-radius: 10px;
+    line-height: 25px;
+    height: 35px;
+}
 .linkbtn:hover{
-    background: teal;
-    color: white;
+    /* background: teal; */
+        margin: 0;
+        color: #FFF;
+        /* padding-top: 7px;
+        padding-bottom: 7px;
+        padding-left: 13px;
+        padding-right: 13px; */
+        background-image:  linear-gradient(to right, #00c6ff 0%, #0072ff  51%,  #00c6ff 100%);
+        width: auto;
+        transition: 0.5s;
+        background-size: 200% auto;
+        background-position: right center;
+        text-decoration: none;
 }
 .container{
     margin: 0;
