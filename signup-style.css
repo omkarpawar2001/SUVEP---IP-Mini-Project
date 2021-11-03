@@ -94,7 +94,7 @@ img {
   }
 
 .custom_nav{
-    font-size: small;
+    /* font-size: small; */
     box-shadow: 0px 2px 12px rgba(226, 223, 223, 0.3);
     padding-left: 15px;
     padding-right: 15px;
@@ -116,7 +116,7 @@ li{
 }
 .btn-design{
     /* background-image:  linear-gradient(to right, teal 0%, rgb(80, 223, 80) 51%, teal 100% ); */
-    background-image:  linear-gradient(to right, #000428 0%, #2374bb  51%, #000428  100%);
+    /* background-image:  linear-gradient(to right, #000428 0%, #2374bb  51%, #000428  100%); */
     /* background-image: linear-gradient(to right, #43C6AC 0%, #191654  51%, #43C6AC  100%); */
 
     align-self: center;
@@ -191,10 +191,10 @@ height: 150px;
 .content{
     margin-top: 5rem;
 }
-.linkbtn:hover{
+/* .linkbtn:hover{
     background: blue;
     color: white;
-}
+} */
 .container{
     margin: 0;
     max-width: 100%;
@@ -283,7 +283,7 @@ section.online-courses, .classroom-training, .reviews-slider, .page-content {
 .course-list-item {
     font-size: small;
     padding-top: 20px;
-    color: black;
+    /* color: black; */
 }
 .course-list-item h5{
     font-size: 1.2em;

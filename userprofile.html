@@ -12,6 +12,7 @@
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="signup-style.css">
+	<!-- <link rel="stylesheet" href="product.css"> -->
 	<link rel="stylesheet" href="./font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css">
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
@@ -19,8 +20,10 @@
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- <script type="module" src="./scripts/display.js"></script> -->
+	<!-- <script type="module" src="scripts/userhome.js"></script> -->
 	<script type="module" src="./scripts/cookiestore.js"></script>
 	<script type="module" src="./scripts/profilepicupload.js"></script>
+	
 
 
 
@@ -31,7 +34,7 @@
 	<style type="text/css">
 		body {
 			background: #f7f7ff;
-			margin-top: 20px;
+			/* margin-top: 20px; */
 		}
 
 		.card {
@@ -58,30 +61,67 @@
 	<script type="module" src="./scripts/updateprofile.js"></script>
 	<script type="module" src="./scripts/cookiestore.js"></script>
 	<script type="module" src="./scripts/firebase_config.js"></script>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top custom_nav">
-		<div class="container">
-			<div class="vertical-center">
-				<a class="navbar-brand" href="userhome.html">
-					<img src="img/logo.png" class="d-inline-block align-top logo rounded-circle" alt="">
-					SUVEP
-				</a>
-			</div>
-			<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-			</ul>
-
-
-
-			<div class="d-flex">
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light custom_nav ">
+		<div class="container-fluid float-end">
+	
+			<a href="#">
+				<img src="img/logo.png" class="d-inline-block logo rounded-circle" alt="" width=5% height=5%>
+				<span class="logo-text">SUVEP </span>
+			</a>
+	
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent" style="white-space: nowrap;">
+				<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+				</ul>
+				<div class="d-flex">
+					<a href="#" class="btn btn-sm linkbtn">How it works ?
+					</a>
+				</div>
+				<div class="d-flex">
+					<a href="#" class="btn btn-sm linkbtn">Shipping and Returns </a>
+				</div>
+				<div class="d-flex">
+					<a href="contact-us.html" class="btn btn-sm linkbtn">Contact Us </a>
+				</div>
+				<div class="d-flex">
+					<a href="about.html" class="btn btn-sm linkbtn">About Us </a>
+				</div>
+				<div class="d-flex btn">
+					<li class="nav-item dropdown ">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<img class="circular_image profile-pic" src="" id="picsm">
+							<b id="data"></b>
+							<script>
+							</script>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="./userprofile.html">My Profile</a>
+							<a class="dropdown-item" id="mydashboard" href="./sellerdash.html">My Dashboard</a>
+							<a class="dropdown-item" id="myproducts" href="./myallproducts.html">My Products</a>
+							<a class="dropdown-item" id="mycart" href="./cart.html">My Cart</a>
+							<a class="dropdown-item" href="./chngpwd.html">Change Password</a>
+							<a class="dropdown-item" href="./about.html">Help & Support</a>
+						</div>
+					</li>
+				</div>
 				<div class="btn btn-design" id="logout"
 					onclick=" var allCookies = document.cookie.split(';');  for (var i = 0; i < allCookies.length; i++){document.cookie = allCookies[i] + '=;expires=' + new Date(0).toUTCString();}  window.location.href='/index.html'; ">
 					Logout
 				</div>
 			</div>
-
-
 		</div>
-
 	</nav>
+	
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+		crossorigin="anonymous"></script>
+
 	<div class="container">
 		<div class="main-body">
 			<div class="row " style="    margin-top: 50px;">
@@ -252,7 +292,7 @@
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" id="submit" value="Save Changes">
+									<input type="button" class="btn btn-outline-success px-4" id="submit" value="Save Changes">
 								</div>
 							</div>
 						</div>
@@ -302,6 +342,14 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
 		crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+			integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+			crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
 </body>
 
 </html>

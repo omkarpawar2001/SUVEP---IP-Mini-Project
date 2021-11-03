@@ -23,6 +23,11 @@ function dashpic() {
         mypro.parentNode.removeChild(mypro);
         var mydash = document.getElementById("mydashboard");
         mydash.parentNode.removeChild(mydash);
+        
+      }
+      else if (data.Type == "Seller") {
+        var mycart = document.getElementById("mycart");
+        mycart.parentNode.removeChild(mycart);
       }
     })
     .catch((err) => {

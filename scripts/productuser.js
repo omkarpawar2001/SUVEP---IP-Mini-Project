@@ -3,7 +3,6 @@ import { db, storage } from "./firebase_config.js";
 
 window.onload = allproducts;
 
-
 function allproducts() {
   document.getElementById("data").innerHTML = getCookieLogin("username");
   const email = getCookieLogin("email");
@@ -13,6 +12,23 @@ function allproducts() {
     .then((url) => {
       console.log("url", url);
       document.getElementById("picsm").setAttribute("src", url);
+    });
+  db.collection("users")
+    .doc(email)
+    .get()
+    .then((querySnapshot) => {
+      let data = querySnapshot.data();
+      if (data.Type != "Seller") {
+        var mypro = document.getElementById("myproducts");
+        mypro.parentNode.removeChild(mypro);
+        var mydash = document.getElementById("mydashboard");
+        mydash.parentNode.removeChild(mydash);
+        var mycart = document.getElementById("mycart");
+        mycart.parentNode.removeChild(mycart);
+      }
+    })
+    .catch((err) => {
+      console.log(`Error: ${err}`);
     });
   db.collection("products")
     .get()
@@ -92,4 +108,3 @@ function createCard(img1, title, desc, price) {
 
   htmldiv.appendChild(maindiv);
 }
-

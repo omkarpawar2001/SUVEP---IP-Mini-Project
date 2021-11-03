@@ -210,7 +210,7 @@ height: 150px;
 .linkbtn:hover{
     /* background: teal; */
         margin: 0;
-        color: #FFF;
+        color: #FFF !important;
         /* padding-top: 7px;
         padding-bottom: 7px;
         padding-left: 13px;
@@ -395,7 +395,7 @@ section.copy p{
 }
 
 .custom_nav{
-    font-size: small;
+    /* font-size: small; */
     box-shadow: 0px 2px 12px rgba(226, 223, 223, 0.3);
     padding-left: 15px;
     padding-right: 15px;
