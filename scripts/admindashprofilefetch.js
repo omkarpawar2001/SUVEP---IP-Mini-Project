@@ -12,6 +12,7 @@ function dashpic() {
   //   tmp = params[i].split('=');
   //   data[tmp[0]] = tmp[1];
   // }
+  
   var usercount = 0,
     ordercount = 0,
     feedcount = 0;
@@ -54,6 +55,31 @@ function dashpic() {
   document.getElementById("data").innerHTML = getCookieLogin("username");
 
   const email = getCookieLogin("email");
+  db.collection("users")
+    .doc(email)
+    .get()
+    .then((querySnapshot) => {
+      let data = querySnapshot.data();
+      if (data.Type == "Admin") {
+        var mypro = document.getElementById("myproducts");
+        mypro.parentNode.removeChild(mypro);
+        var mydash = document.getElementById("mydashboard");
+        mydash.parentNode.removeChild(mydash);
+        var mycart = document.getElementById("mycart");
+        mycart.parentNode.removeChild(mycart);
+      } else if (data.Type != "Seller") {
+        var mypro = document.getElementById("myproducts");
+        mypro.parentNode.removeChild(mypro);
+        var mydash = document.getElementById("mydashboard");
+        mydash.parentNode.removeChild(mydash);
+      } else if (data.Type == "Seller") {
+        var mycart = document.getElementById("mycart");
+        mycart.parentNode.removeChild(mycart);
+      }
+    })
+    .catch((err) => {
+      console.log(`Error: ${err}`);
+    });
   storage
     .ref(email + "/profileimg")
     .getDownloadURL()

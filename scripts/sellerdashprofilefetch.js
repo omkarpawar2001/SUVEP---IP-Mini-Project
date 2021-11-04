@@ -11,7 +11,14 @@ function dashpic() {
     .get()
     .then((querySnapshot) => {
       let data = querySnapshot.data();
-      if (data.Type != "Seller") {
+      if (data.Type == "Admin") {
+        var mypro = document.getElementById("myproducts");
+        mypro.parentNode.removeChild(mypro);
+        var mydash = document.getElementById("mydashboard");
+        mydash.parentNode.removeChild(mydash);
+        var mycart = document.getElementById("mycart");
+        mycart.parentNode.removeChild(mycart);
+      } else if (data.Type != "Seller") {
         var mypro = document.getElementById("myproducts");
         mypro.parentNode.removeChild(mypro);
         var mydash = document.getElementById("mydashboard");
