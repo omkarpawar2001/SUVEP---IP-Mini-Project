@@ -13,6 +13,7 @@
     
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="signup-style.css">
+	
 	<link rel="stylesheet" href="./font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.css">
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
@@ -20,8 +21,9 @@
 	<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- <script type="module" src="./scripts/display.js"></script> -->
-	<script type="module" src="./scripts/cookiestore.js"></script>
-	<script type="module" src="./scripts/profilepicupload.js"></script>
+	<!-- <script type="module" src="./scripts/cookiestore.js"></script> -->
+	<script type="module" src="./scripts/product-changes.js"></script>
+	<script type="module" src="./scripts/userhome.js"></script>
 	<link rel="shortcut icon" href="img/logo.PNG">
 
 
@@ -29,15 +31,10 @@
 
     
 	<script type="module" src="scripts/userhome.js"></script>
-	
 
-<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage-compat.js"></script>
 <link rel="stylesheet" href="style.css">
 
-	<title>Home Page</title>
+	<title>Update Product | SUVEP</title>
 	<style type="text/css">
 
 		.card {
@@ -56,6 +53,10 @@
 
 		.me-2 {
 			margin-right: .5rem !important;
+		}
+		.logo{
+			width: 5% !important;
+			margin-right: 5px;
 		}
 	</style>
 </head>
@@ -83,7 +84,7 @@
                 <a href="contact-us-user.html" class="btn btn-sm linkbtn">Contact Us </a>
             </div>
             <div class="d-flex">
-                <a href="contact-us-user.html" class="btn btn-sm linkbtn">About Us </a>
+                <a href="about-user.html" class="btn btn-sm linkbtn">About Us </a>
             </div>
             <div class="d-flex btn">
                 <li class="nav-item dropdown ">
@@ -100,7 +101,7 @@
 						<a class="dropdown-item" id="myproducts" href="./myallproducts.html">My Products</a>
 						<a class="dropdown-item" id="mycart" href="./cart.html">My Cart</a>
 						<a class="dropdown-item" href="./chngpwd.html">Change Password</a>
-						<a class="dropdown-item" href="./about.html">Help & Support</a>
+						<a class="dropdown-item" href="./about-user.html">Help & Support</a>
                     </div>
                 </li>
             </div>
@@ -119,7 +120,7 @@
 
 	<script type="module" src="./scripts/cookiestore.js"></script>
 	<script type="module" src="./scripts/firebase_config.js"></script>
-	<script type="module" src="./scripts/userhome.js"></script>
+	
 
 	<div class="container">
 		<div class="main-body ">
@@ -128,13 +129,12 @@
 					<div class="justify-content-center">
 						<div class="product-imgs justify-content-center">
 							<div class="d-flex align-items-center text-center justify-content-center">
-								<img onclick="changeImage(this)" src="img/penstand1.jpg" width="70"
+								<img src="" width="70"
                                         class="product-img" id="img1" style="margin-right: 20px;">
-
-                                    <img onclick="changeImage(this)" src="img/penstand1.jpg" width="70"
-                                        class="product-img" id="img1"  style="margin-right: 20px;">
-                                    <img onclick="changeImage(this)" src="img/penstand1.jpg" width="70"
-                                        class="product-img" id="img1">
+                                    <img src="" width="70"
+                                        class="product-img" id="img2"  style="margin-right: 20px;">
+                                    <img src="" width="70"
+                                        class="product-img" id="img3">
 								<div class="mt-3">
 									<!-- <h4 id="name1"></h4> -->
 									<p class="text-secondary mb-1" id="type"></p>
@@ -157,7 +157,7 @@
 
 								<div class="d-flex justify-content-center">
 									<div class="btn btn-mdb-color btn-rounded float-left">
-										<input type="file" id="fileUpload" multiple>
+										<input type="file", id="fileUpload" multiple >
 									</div>
 								</div>
 							</div>
@@ -175,23 +175,23 @@
 									<h6 class="mb-2">Product Name</h6>
 								</div>
 								<div class="col-sm-12 text-secondary">
-									<input type="text" class="form-control" id="fullname">
+									<input type="text" class="form-control" id="name">
 								</div>
 							<!-- </div> -->
                             <div class="col-sm-3">
                                 <h6 class="mb-2">Product Price </h6>
                             </div>
                             <div class="col-sm-12 text-secondary">
-                                <input type="text" class="form-control" id="fullname">
+                                <input type="number" class="form-control" id="price">
                             </div>
 							<div class="col-sm-3">
                                 <h6 class="mb-2">Description </h6>
                             </div>
                             <div class="col-sm-12 text-secondary">
-                                <input type="text" class="form-control" id="fullname">
+                                <input type="text" class="form-control" id="desc">
                             </div>
 							<div class="col-sm-3">
-                                <h6 class="mb-2">Product Name</h6>
+                                <h6 class="mb-2">Product Category</h6>
                             </div>
                             <div class="input-box" >
                                 <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
@@ -208,7 +208,7 @@
 
 						</div>
 						
-						<input type="button" id="" value="Submit "class="btn btn-outline-info">
+						<input type="button" id="submit" value="Submit" class="btn btn-outline-success">
 					</div>
 				</div>
 			</div>
@@ -236,18 +236,18 @@
 			getCookieLogin('address'),
 		];
 
-		document.getElementById('name1').innerHTML = arr[0];
-		document.getElementById('emailpd').innerHTML = arr[2];
-		document.getElementById("fullname").value = arr[0];
-		document.getElementById("type").innerHTML = arr[1];
-		document.getElementById("type1").value = arr[1];
-		document.getElementById("typepd").innerHTML = arr[1];
-		document.getElementById("address").innerHTML = arr[4];
-		document.getElementById("mobile").value = arr[3];
-		document.getElementById("mobpd").innerHTML = arr[3];
-		document.getElementById("email").value = arr[2];
-		document.getElementById("address1").value = arr[4];
-		document.getElementById("address").value = arr[4];
+		// document.getElementById('name1').innerHTML = arr[0];
+		// document.getElementById('emailpd').innerHTML = arr[2];
+		// document.getElementById("fullname").value = arr[0];
+		// document.getElementById("type").innerHTML = arr[1];
+		// document.getElementById("type1").value = arr[1];
+		// document.getElementById("typepd").innerHTML = arr[1];
+		// document.getElementById("address").innerHTML = arr[4];
+		// document.getElementById("mobile").value = arr[3];
+		// document.getElementById("mobpd").innerHTML = arr[3];
+		// document.getElementById("email").value = arr[2];
+		// document.getElementById("address1").value = arr[4];
+		// document.getElementById("address").value = arr[4];
 
 
 

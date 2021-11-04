@@ -116,7 +116,7 @@ function createCard(img1, title, desc, price) {
   pcardtext.innerHTML = desc;
 
   atag.innerHTML = title;
-  atag.setAttribute("href", "product-user.html?product=" + title);
+  atag.setAttribute("href", "product-changes.html?product=" + title);
   h5.appendChild(atag);
 
   cardbody.appendChild(h5);

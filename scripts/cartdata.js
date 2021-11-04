@@ -42,7 +42,7 @@ function checkout(e) {
   var totalprice = parseInt(document.getElementById("carttotalfinal").value);
   // alert(totalprice);
   var options = {
-    key: "rzp_test_h5iCkEZGWojMlW", // Enter the Key ID generated from the Dashboard Yash ID
+    key: "rzp_test_l6jWZQryNCk0Xq", // Enter the Key ID generated from the Dashboard Yash ID
     // "key": "rzp_test_PpOinqLyVBHOcP", // Enter the Key ID generated from the Dashboard
     amount: totalprice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 means 50000 paise or ₹500.
     currency: "INR",
@@ -72,7 +72,6 @@ function checkout(e) {
         ":" +
         currentdate.getSeconds();
       console.log(datetime);
-
 
       const order_data = {
         Name: name,
@@ -109,7 +108,6 @@ function checkout(e) {
         }
       );
       $("#myModal").modal();
-      
     },
     prefill: {
       name: name,
